@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokemon LeafGreen Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --navy:      #1a1a2e;
+      --navy-mid:  #16213e;
+      --navy-card: #0f3460;
+      --yellow:    #ffcc00;
+      --yellow-dim: #c9a200;
+      --red:       #cc0000;
+      --red-bright:#ff2222;
+      --green:     #00cc44;
+      --white:     #e8e8e8;
+      --gray:      #8899aa;
+      --border:    #2a4a7f;
+    }
+
+    html, body {
+      min-height: 100%;
+      background-color: var(--navy);
+      color: var(--white);
+      font-family: 'VT323', monospace;
+      font-size: 20px;
+      line-height: 1.5;
+    }
+
+    /* ── Scanline overlay ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.08) 2px,
+        rgba(0,0,0,0.08) 4px
+      );
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    /* ── Page wrapper ── */
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 16px 60px;
+    }
+
+    /* ── Header ── */
+    .site-header {
+      text-align: center;
+      padding: 36px 16px 24px;
+      border-bottom: 3px solid var(--border);
+      position: relative;
+    }
+
+    .site-header::after {
+      content: '';
+      display: block;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--yellow), var(--red), var(--yellow), transparent);
+      margin-top: 12px;
+    }
+
+    .header-badge {
+      display: inline-block;
+      background: var(--red);
+      color: var(--yellow);
+      font-family: 'Press Start 2P', monospace;
+      font-size: 9px;
+      padding: 4px 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      border: 2px solid var(--yellow-dim);
+      box-shadow: 3px 3px 0 #000, inset 0 0 8px rgba(0,0,0,0.4);
+    }
+
+    .site-title {
+      font-family: 'Press Start 2P', monospace;
+      font-size: clamp(18px, 4vw, 30px);
+      color: var(--yellow);
+      text-shadow:
+        3px 3px 0 var(--red),
+        6px 6px 0 rgba(0,0,0,0.5);
+      letter-spacing: 2px;
+      line-height: 1.4;
+    }
+
+    .site-subtitle {
+      font-family: 'VT323', monospace;
+      font-size: 22px;
+      color: var(--gray);
+      margin-top: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    /* Pokeball decoration */
+    .pokeball-row {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .pokeball {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: linear-gradient(180deg, var(--red) 50%, #fff 50%);
+      border: 2px solid #aaa;
+      position: relative;
+      box-shadow: 1px 1px 0 #000;
+    }
+
+    .pokeball::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #fff;
+      border: 1.5px solid #aaa;
+      z-index: 1;
+    }
+
+    .pokeball::after {
+      content: '';
+      position: absolute;
+      top: calc(50% - 1px);
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: #aaa;
+    }
+
+    /* ── Tab bar ── */
+    .tab-bar {
+      display: flex;
+      margin-top: 28px;
+      gap: 4px;
+      border-bottom: 4px solid var(--border);
+      padding-bottom: 0;
+    }
+
+    .tab-btn {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 9px;
+      padding: 10px 14px;
+      cursor: pointer;
+      border: 3px solid var(--border);
+      border-bottom: none;
+      background: var(--navy-mid);
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.15s, background 0.15s, border-color 0.15s;
+      position: relative;
+      top: 4px;
+      flex: 1;
+      text-align: center;
+      user-select: none;
+      line-height: 1.6;
+    }
+
+    .tab-btn:hover {
+      color: var(--yellow);
+      border-color: var(--yellow-dim);
+      background: #1e2a50;
+    }
+
+    .tab-btn.active {
+      background: var(--navy-card);
+      color: var(--yellow);
+      border-color: var(--yellow);
+      border-bottom: 4px solid var(--navy-card);
+      top: 4px;
+      z-index: 1;
+    }
+
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: -3px;
+      right: -3px;
+      height: 4px;
+      background: var(--navy-card);
+    }
+
+    /* ── Tab panels ── */
+    .tab-panel {
+      display: none;
+      background: var(--navy-card);
+      border: 3px solid var(--border);
+      border-top: none;
+      padding: 32px 28px;
+      min-height: 480px;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    /* ── Placeholder content ── */
+    .placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 380px;
+      text-align: center;
+      gap: 20px;
+    }
+
+    .placeholder-icon {
+      font-size: 72px;
+      line-height: 1;
+      filter: drop-shadow(0 0 12px currentColor);
+    }
+
+    .placeholder-title {
+      font-family: 'Press Start 2P', monospace;
+      font-size: clamp(12px, 2.5vw, 18px);
+      color: var(--yellow);
+      text-shadow: 2px 2px 0 var(--red);
+      line-height: 1.6;
+    }
+
+    .placeholder-desc {
+      font-size: 22px;
+      color: var(--gray);
+      max-width: 480px;
+      letter-spacing: 1px;
+    }
+
+    .placeholder-tag {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 8px;
+      color: var(--navy);
+      background: var(--green);
+      padding: 6px 14px;
+      border: 2px solid #009933;
+      box-shadow: 2px 2px 0 #000;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      animation: blink 1.2s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+
+    .placeholder-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+      max-width: 400px;
+      margin-top: 8px;
+    }
+
+    .placeholder-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255,255,255,0.04);
+      border: 2px solid var(--border);
+      padding: 10px 14px;
+      font-size: 20px;
+      color: var(--gray);
+      letter-spacing: 1px;
+    }
+
+    .placeholder-item::before {
+      content: '▶';
+      color: var(--yellow-dim);
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    /* ── Gym leader specific placeholder ── */
+    .badge-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      width: 100%;
+      max-width: 440px;
+    }
+
+    .badge-slot {
+      aspect-ratio: 1;
+      border: 2px dashed var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      background: rgba(255,255,255,0.02);
+      transition: border-color 0.2s;
+    }
+
+    .badge-slot:hover {
+      border-color: var(--yellow-dim);
+    }
+
+    /* ── Team builder placeholder ── */
+    .party-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .party-slot {
+      aspect-ratio: 1;
+      border: 2px dashed var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 7px;
+      color: var(--border);
+      background: rgba(255,255,255,0.02);
+      padding: 10px;
+      text-align: center;
+      transition: border-color 0.2s, color 0.2s;
+      cursor: pointer;
+    }
+
+    .party-slot:hover {
+      border-color: var(--yellow-dim);
+      color: var(--yellow-dim);
+    }
+
+    .party-slot .slot-icon {
+      font-size: 28px;
+      filter: grayscale(1) opacity(0.3);
+    }
+
+    .party-slot:hover .slot-icon {
+      filter: grayscale(0) opacity(0.8);
+    }
+
+    /* ── Footer ── */
+    .site-footer {
+      text-align: center;
+      padding: 24px 16px;
+      margin-top: 32px;
+      border-top: 2px solid var(--border);
+      font-size: 16px;
+      color: var(--border);
+      letter-spacing: 2px;
+    }
+
+    .site-footer span {
+      color: var(--red);
+    }
+
+    /* ── Pixel corners on card border ── */
+    .tab-panel {
+      position: relative;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 560px) {
+      .tab-btn {
+        font-size: 7px;
+        padding: 10px 6px;
+      }
+
+      .badge-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+      }
+
+      .party-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+
+    <!-- ── Header ── -->
+    <header class="site-header">
+      <div class="header-badge">Official Strategy Guide</div>
+      <h1 class="site-title">POKEMON<br>LEAFGREEN</h1>
+      <p class="site-subtitle">Nintendo Switch &bull; 2026</p>
+      <div class="pokeball-row">
+        <div class="pokeball"></div>
+        <div class="pokeball"></div>
+        <div class="pokeball"></div>
+      </div>
+    </header>
+
+    <!-- ── Tabs ── -->
+    <nav class="tab-bar" role="tablist">
+      <button class="tab-btn active" role="tab" aria-selected="true"  aria-controls="panel-walkthrough" id="tab-walkthrough" onclick="switchTab('walkthrough')">Walkthrough</button>
+      <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="panel-gymleaders"  id="tab-gymleaders"  onclick="switchTab('gymleaders')">Gym Leaders</button>
+      <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="panel-teambuilder" id="tab-teambuilder" onclick="switchTab('teambuilder')">Team Builder</button>
+    </nav>
+
+    <!-- ── Walkthrough panel ── -->
+    <section class="tab-panel active" id="panel-walkthrough" role="tabpanel" aria-labelledby="tab-walkthrough">
+      <div class="placeholder">
+        <div class="placeholder-icon" style="color: var(--yellow);">🗺️</div>
+        <h2 class="placeholder-title">Walkthrough</h2>
+        <p class="placeholder-desc">Step-by-step guide from Pallet Town to the Pokemon League. Coming soon.</p>
+        <div class="placeholder-list">
+          <div class="placeholder-item">Pallet Town &amp; Route 1</div>
+          <div class="placeholder-item">Pewter City &mdash; Brock</div>
+          <div class="placeholder-item">Mt. Moon &amp; Route 3</div>
+          <div class="placeholder-item">Cerulean City &mdash; Misty</div>
+          <div class="placeholder-item">Vermilion City &mdash; Lt. Surge</div>
+          <div class="placeholder-item">&hellip; and more</div>
+        </div>
+        <div class="placeholder-tag">Coming Soon</div>
+      </div>
+    </section>
+
+    <!-- ── Gym Leaders panel ── -->
+    <section class="tab-panel" id="panel-gymleaders" role="tabpanel" aria-labelledby="tab-gymleaders">
+      <div class="placeholder">
+        <div class="placeholder-icon" style="color: var(--red);">🏆</div>
+        <h2 class="placeholder-title">Gym Leaders</h2>
+        <p class="placeholder-desc">All 8 Kanto gym leaders, their teams, and recommended counters.</p>
+        <div class="badge-grid">
+          <div class="badge-slot" title="Boulder Badge">🪨</div>
+          <div class="badge-slot" title="Cascade Badge">💧</div>
+          <div class="badge-slot" title="Thunder Badge">⚡</div>
+          <div class="badge-slot" title="Rainbow Badge">🌈</div>
+          <div class="badge-slot" title="Soul Badge">👻</div>
+          <div class="badge-slot" title="Marsh Badge">🌿</div>
+          <div class="badge-slot" title="Volcano Badge">🔥</div>
+          <div class="badge-slot" title="Earth Badge">🌍</div>
+        </div>
+        <div class="placeholder-tag">Coming Soon</div>
+      </div>
+    </section>
+
+    <!-- ── Team Builder panel ── -->
+    <section class="tab-panel" id="panel-teambuilder" role="tabpanel" aria-labelledby="tab-teambuilder">
+      <div class="placeholder">
+        <div class="placeholder-icon" style="color: var(--green);">⚔️</div>
+        <h2 class="placeholder-title">Team Builder</h2>
+        <p class="placeholder-desc">Plan your party of 6. Check type coverage and version exclusives.</p>
+        <div class="party-grid">
+          <div class="party-slot"><div class="slot-icon">🎮</div>Slot 1</div>
+          <div class="party-slot"><div class="slot-icon">🎮</div>Slot 2</div>
+          <div class="party-slot"><div class="slot-icon">🎮</div>Slot 3</div>
+          <div class="party-slot"><div class="slot-icon">🎮</div>Slot 4</div>
+          <div class="party-slot"><div class="slot-icon">🎮</div>Slot 5</div>
+          <div class="party-slot"><div class="slot-icon">🎮</div>Slot 6</div>
+        </div>
+        <div class="placeholder-tag">Coming Soon</div>
+      </div>
+    </section>
+
+    <!-- ── Footer ── -->
+    <footer class="site-footer">
+      &copy; 2024 LeafGreen Guide &bull; Made with <span>&#9829;</span> &bull; Not affiliated with Nintendo
+    </footer>
+
+  </div>
+
+  <script>
+    function switchTab(name) {
+      // Deactivate all tabs and panels
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-selected', 'false');
+      });
+      document.querySelectorAll('.tab-panel').forEach(panel => {
+        panel.classList.remove('active');
+      });
+
+      // Activate the selected tab and panel
+      const btn   = document.getElementById('tab-' + name);
+      const panel = document.getElementById('panel-' + name);
+
+      if (btn)   { btn.classList.add('active');   btn.setAttribute('aria-selected', 'true'); }
+      if (panel) { panel.classList.add('active'); }
+    }
+  </script>
+
+</body>
+</html>
