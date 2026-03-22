@@ -383,6 +383,400 @@
       position: relative;
     }
 
+    /* ── Walkthrough cards ── */
+    .walkthrough {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .wt-card {
+      border: 3px solid var(--border);
+      background: var(--navy-mid);
+      overflow: hidden;
+    }
+
+    .wt-card-header {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      background: var(--navy);
+      border-bottom: 3px solid var(--border);
+      padding: 10px 16px;
+    }
+
+    .wt-card-num {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 8px;
+      color: var(--red);
+      flex-shrink: 0;
+    }
+
+    .wt-card-title {
+      font-family: 'Press Start 2P', monospace;
+      font-size: clamp(9px, 1.8vw, 12px);
+      color: var(--yellow);
+      line-height: 1.5;
+    }
+
+    .wt-card-body {
+      padding: 16px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .wt-desc {
+      grid-column: 1 / -1;
+      font-size: 20px;
+      color: var(--white);
+      letter-spacing: 0.5px;
+      line-height: 1.5;
+      border-left: 3px solid var(--yellow-dim);
+      padding-left: 12px;
+    }
+
+    .wt-section-label {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 7px;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .wt-items-list,
+    .wt-pokemon-list,
+    .wt-tips-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .wt-items-list li,
+    .wt-pokemon-list li,
+    .wt-tips-list li {
+      font-size: 19px;
+      color: var(--white);
+      padding: 4px 8px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .wt-items-list li::before {
+      content: '◆';
+      color: var(--yellow-dim);
+      font-size: 10px;
+      flex-shrink: 0;
+    }
+
+    .wt-tips-list li::before {
+      content: '★';
+      color: var(--red);
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+
+    .wt-pokemon-list li {
+      justify-content: space-between;
+    }
+
+    .wt-pokemon-name {
+      color: var(--white);
+    }
+
+    .rarity {
+      font-size: 16px;
+      padding: 1px 6px;
+      border: 1px solid;
+      flex-shrink: 0;
+    }
+
+    .rarity-common  { color: var(--green);     border-color: var(--green);  }
+    .rarity-rare    { color: var(--yellow);     border-color: var(--yellow-dim); }
+    .rarity-vr      { color: var(--red-bright); border-color: var(--red);   }
+
+    .wt-tips-col {
+      grid-column: 1 / -1;
+    }
+
+    /* ── Gym Leader cards ── */
+    .gym-leaders {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .gl-card {
+      border: 3px solid var(--border);
+      background: var(--navy-mid);
+      overflow: hidden;
+    }
+
+    .gl-card-header {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 14px;
+      background: var(--navy);
+      border-bottom: 3px solid var(--border);
+      padding: 12px 16px;
+    }
+
+    .gl-num {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 8px;
+      color: var(--red);
+      flex-shrink: 0;
+    }
+
+    .gl-title-block {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .gl-name {
+      font-family: 'Press Start 2P', monospace;
+      font-size: clamp(10px, 2vw, 13px);
+      color: var(--yellow);
+      line-height: 1.4;
+    }
+
+    .gl-meta {
+      font-size: 18px;
+      color: var(--gray);
+      letter-spacing: 1px;
+    }
+
+    .gl-badge-pill {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 7px;
+      padding: 5px 10px;
+      border: 2px solid;
+      text-align: center;
+      white-space: nowrap;
+      line-height: 1.6;
+    }
+
+    .gl-badge-pill.type-rock    { color: #c9a06e; border-color: #c9a06e; }
+    .gl-badge-pill.type-water   { color: #60b4ff; border-color: #60b4ff; }
+    .gl-badge-pill.type-electric{ color: var(--yellow); border-color: var(--yellow-dim); }
+    .gl-badge-pill.type-grass   { color: #44dd66; border-color: #33aa44; }
+    .gl-badge-pill.type-poison  { color: #cc77ff; border-color: #9944cc; }
+    .gl-badge-pill.type-psychic { color: #ff88bb; border-color: #cc4477; }
+    .gl-badge-pill.type-fire    { color: #ff8844; border-color: #cc5511; }
+    .gl-badge-pill.type-ground  { color: #ddbb66; border-color: #aa8833; }
+
+    .gl-body {
+      padding: 16px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .gl-desc {
+      grid-column: 1 / -1;
+      font-size: 20px;
+      color: var(--white);
+      line-height: 1.5;
+      letter-spacing: 0.5px;
+      border-left: 3px solid var(--red);
+      padding-left: 12px;
+    }
+
+    .gl-section-label {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 7px;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .gl-team-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .gl-team-list li {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      padding: 6px 10px;
+      font-size: 19px;
+    }
+
+    .gl-pokemon-name {
+      color: var(--white);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .gl-moves {
+      font-size: 17px;
+      color: var(--gray);
+    }
+
+    .gl-tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .gl-tag {
+      font-size: 17px;
+      padding: 3px 8px;
+      border: 1px solid;
+      letter-spacing: 0.5px;
+    }
+
+    .gl-tag.weak  { color: var(--red-bright); border-color: var(--red); background: rgba(204,0,0,0.1); }
+    .gl-tag.counter { color: var(--green); border-color: #009933; background: rgba(0,204,68,0.07); }
+
+    .gl-counters-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .gl-counters-list li {
+      font-size: 19px;
+      color: var(--white);
+      padding: 4px 10px;
+      background: rgba(0,204,68,0.05);
+      border: 1px solid rgba(0,204,68,0.2);
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .gl-counters-list li::before {
+      content: '✦';
+      color: var(--green);
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+
+    .gl-rewards-row {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .gl-reward-box {
+      flex: 1;
+      min-width: 140px;
+      background: rgba(255,204,0,0.05);
+      border: 2px solid var(--yellow-dim);
+      padding: 8px 12px;
+    }
+
+    .gl-reward-box .gl-section-label {
+      margin-bottom: 4px;
+    }
+
+    .gl-reward-val {
+      font-size: 20px;
+      color: var(--yellow);
+    }
+
+    .gl-tip-col {
+      grid-column: 1 / -1;
+    }
+
+    .gl-tip-box {
+      border: 2px solid var(--red);
+      background: rgba(204,0,0,0.07);
+      padding: 10px 14px;
+      font-size: 19px;
+      color: var(--white);
+      line-height: 1.5;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .gl-tip-box::before {
+      content: '★';
+      color: var(--red);
+      font-size: 16px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ── Team Builder ── */
+    .tb-wrap { display: flex; flex-direction: column; gap: 20px; }
+
+    .tb-panel-header { text-align: center; padding-bottom: 14px; border-bottom: 2px solid var(--border); }
+    .tb-panel-header h2 { font-family: 'Press Start 2P', monospace; font-size: clamp(10px, 2vw, 14px); color: var(--yellow); text-shadow: 2px 2px 0 var(--red); line-height: 1.5; }
+    .tb-panel-header p { font-size: 18px; color: var(--gray); margin-top: 8px; letter-spacing: 1px; }
+
+    .tb-config-bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; background: var(--navy-mid); border: 2px solid var(--border); padding: 12px 14px; }
+    .tb-team-tabs { display: flex; gap: 4px; }
+    .tb-team-btn { font-family: 'Press Start 2P', monospace; font-size: 7px; padding: 8px 10px; background: var(--navy); color: var(--gray); border: 2px solid var(--border); cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: color 0.15s, border-color 0.15s, background 0.15s; line-height: 1.6; }
+    .tb-team-btn:hover { color: var(--yellow); border-color: var(--yellow-dim); }
+    .tb-team-btn.active { color: var(--yellow); border-color: var(--yellow); background: rgba(255,204,0,0.08); }
+    .tb-config-right { display: flex; gap: 8px; align-items: center; margin-left: auto; flex-wrap: wrap; }
+    .tb-rename-input { font-family: 'VT323', monospace; font-size: 20px; background: var(--navy); color: var(--white); border: 2px solid var(--border); padding: 4px 10px; width: 160px; }
+    .tb-rename-input:focus { border-color: var(--yellow); outline: none; }
+    .tb-save-btn { font-family: 'Press Start 2P', monospace; font-size: 7px; padding: 8px 12px; background: var(--red); color: var(--yellow); border: 2px solid var(--yellow-dim); cursor: pointer; text-transform: uppercase; box-shadow: 2px 2px 0 #000; transition: opacity 0.15s; }
+    .tb-save-btn:hover { opacity: 0.85; }
+    .tb-save-flash { font-family: 'Press Start 2P', monospace; font-size: 7px; color: var(--green); opacity: 0; transition: opacity 0.2s; }
+    .tb-save-flash.show { opacity: 1; }
+
+    .tb-slots-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    .tb-slot { border: 2px solid var(--yellow); background: var(--navy); overflow: hidden; }
+    .tb-slot-header { background: rgba(255,204,0,0.07); border-bottom: 2px solid var(--yellow-dim); padding: 7px 12px; display: flex; align-items: center; gap: 10px; }
+    .tb-slot-num { font-family: 'Press Start 2P', monospace; font-size: 7px; color: var(--yellow); flex-shrink: 0; }
+    .tb-name-input { flex: 1; background: transparent; border: none; border-bottom: 1px solid var(--yellow-dim); font-family: 'VT323', monospace; font-size: 21px; color: var(--yellow); padding: 0 4px; min-width: 0; }
+    .tb-name-input::placeholder { color: rgba(255,204,0,0.25); }
+    .tb-name-input:focus { outline: none; border-bottom-color: var(--yellow); }
+
+    .tb-slot-body { padding: 11px; display: flex; flex-direction: column; gap: 8px; }
+    .tb-label { font-family: 'Press Start 2P', monospace; font-size: 6px; color: var(--gray); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 3px; }
+
+    .tb-input, .tb-select { width: 100%; background: var(--navy-mid); color: var(--white); border: 1px solid var(--border); font-family: 'VT323', monospace; font-size: 19px; padding: 3px 7px; box-sizing: border-box; }
+    .tb-input::placeholder { color: rgba(255,255,255,0.2); }
+    .tb-input:focus, .tb-select:focus { border-color: var(--yellow); outline: none; }
+    .tb-select { cursor: pointer; appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%238899aa'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 7px center; padding-right: 22px; }
+    .tb-select option { background: #16213e; color: #e8e8e8; }
+
+    .tb-types-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .tb-moves-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+
+    .tb-panel-box { border: 2px solid var(--border); background: var(--navy-mid); padding: 16px; }
+    .tb-panel-title { font-family: 'Press Start 2P', monospace; font-size: 9px; color: var(--yellow); text-shadow: 1px 1px 0 var(--red); margin-bottom: 16px; letter-spacing: 1px; }
+
+    .tb-cov-section { margin-bottom: 14px; }
+    .tb-cov-section:last-child { margin-bottom: 0; }
+    .tb-cov-label { font-family: 'Press Start 2P', monospace; font-size: 6px; color: var(--gray); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+    .tb-cov-row { display: flex; flex-wrap: wrap; gap: 5px; }
+    .tb-cov-badge { font-family: 'Press Start 2P', monospace; font-size: 6px; padding: 4px 7px; border: 2px solid; transition: background 0.2s, border-color 0.2s, color 0.2s; letter-spacing: 0.5px; cursor: default; }
+    .tb-cov-badge.covered   { color: var(--green);     border-color: var(--green);      background: rgba(0,204,68,0.12);   }
+    .tb-cov-badge.weak      { color: var(--red-bright); border-color: var(--red);        background: rgba(204,0,0,0.12);    }
+    .tb-cov-badge.multi-weak{ color: #fff;             border-color: var(--red-bright);  background: rgba(204,0,0,0.28);    }
+    .tb-cov-badge.neutral   { color: var(--border);    border-color: rgba(42,74,127,0.5); background: transparent;          }
+
+    .tb-excl-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .tb-excl-item { background: rgba(0,204,68,0.05); border: 1px solid rgba(0,204,68,0.2); padding: 7px 10px; font-size: 18px; color: var(--white); display: flex; align-items: flex-start; gap: 6px; }
+    .tb-excl-item::before { content: '▸'; color: var(--green); font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+
+    @media (max-width: 680px) {
+      .tb-slots-grid { grid-template-columns: 1fr; }
+      .tb-excl-grid  { grid-template-columns: 1fr 1fr; }
+      .tb-config-right { margin-left: 0; }
+    }
+
     /* ── Responsive ── */
     @media (max-width: 560px) {
       .tab-btn {
@@ -427,58 +821,1670 @@
 
     <!-- ── Walkthrough panel ── -->
     <section class="tab-panel active" id="panel-walkthrough" role="tabpanel" aria-labelledby="tab-walkthrough">
-      <div class="placeholder">
-        <div class="placeholder-icon" style="color: var(--yellow);">🗺️</div>
-        <h2 class="placeholder-title">Walkthrough</h2>
-        <p class="placeholder-desc">Step-by-step guide from Pallet Town to the Pokemon League. Coming soon.</p>
-        <div class="placeholder-list">
-          <div class="placeholder-item">Pallet Town &amp; Route 1</div>
-          <div class="placeholder-item">Pewter City &mdash; Brock</div>
-          <div class="placeholder-item">Mt. Moon &amp; Route 3</div>
-          <div class="placeholder-item">Cerulean City &mdash; Misty</div>
-          <div class="placeholder-item">Vermilion City &mdash; Lt. Surge</div>
-          <div class="placeholder-item">&hellip; and more</div>
+      <div class="walkthrough">
+
+        <!-- 01 Pallet Town -->
+        <div class="wt-card">
+          <div class="wt-card-header">
+            <span class="wt-card-num">01</span>
+            <h3 class="wt-card-title">Pallet Town</h3>
+          </div>
+          <div class="wt-card-body">
+            <p class="wt-desc">Your journey begins here. Oak stops you before you can leave — head to his lab to receive your starter. Choose Bulbasaur, Charmander, or Squirtle. Your rival picks the one with a type advantage over yours.</p>
+            <div>
+              <div class="wt-section-label">Key Items</div>
+              <ul class="wt-items-list">
+                <li>Starter Pokemon (from Oak)</li>
+                <li>Pokedex (from Oak after rival battle)</li>
+                <li>Town Map (from Daisy in rival's house)</li>
+              </ul>
+            </div>
+            <div>
+              <div class="wt-section-label">Wild Pokemon</div>
+              <ul class="wt-pokemon-list">
+                <li><span class="wt-pokemon-name">None</span><span class="rarity rarity-vr">N/A</span></li>
+              </ul>
+            </div>
+            <div class="wt-tips-col">
+              <div class="wt-section-label">Trainer Tips</div>
+              <ul class="wt-tips-list">
+                <li>Bulbasaur is the easiest pick — type advantages over Brock and Misty make the first two gyms straightforward.</li>
+                <li>Talk to everyone in Oak's lab before leaving to trigger the Pokedex gift on your return.</li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div class="placeholder-tag">Coming Soon</div>
+
+        <!-- 02 Route 1 -->
+        <div class="wt-card">
+          <div class="wt-card-header">
+            <span class="wt-card-num">02</span>
+            <h3 class="wt-card-title">Route 1</h3>
+          </div>
+          <div class="wt-card-body">
+            <p class="wt-desc">A short grassy path between Pallet Town and Viridian City. Grind your starter to level 6–8 before moving on. An NPC near the start hands you a free Potion on your first pass.</p>
+            <div>
+              <div class="wt-section-label">Key Items</div>
+              <ul class="wt-items-list">
+                <li>Potion (free from NPC on first trip north)</li>
+              </ul>
+            </div>
+            <div>
+              <div class="wt-section-label">Wild Pokemon</div>
+              <ul class="wt-pokemon-list">
+                <li><span class="wt-pokemon-name">Pidgey</span><span class="rarity rarity-common">Common</span></li>
+                <li><span class="wt-pokemon-name">Rattata</span><span class="rarity rarity-common">Common</span></li>
+              </ul>
+            </div>
+            <div class="wt-tips-col">
+              <div class="wt-section-label">Trainer Tips</div>
+              <ul class="wt-tips-list">
+                <li>Catch a Pidgey — it evolves into Pidgeot and remains a reliable flyer and attacker through the entire game.</li>
+                <li>Rattata is weak long-term but useful filler early if you need a second team slot quickly.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 03 Viridian City -->
+        <div class="wt-card">
+          <div class="wt-card-header">
+            <span class="wt-card-num">03</span>
+            <h3 class="wt-card-title">Viridian City</h3>
+          </div>
+          <div class="wt-card-body">
+            <p class="wt-desc">First city with a Pokemon Center and Mart. The Gym is locked until you earn all other badges. Deliver Oak's Parcel (buy it at the Mart) back to Oak in Pallet, then return — this unlocks Poke Ball purchases.</p>
+            <div>
+              <div class="wt-section-label">Key Items</div>
+              <ul class="wt-items-list">
+                <li>Oak's Parcel (buy at Mart, deliver to Oak)</li>
+                <li>Poke Balls (available at Mart after delivery)</li>
+              </ul>
+            </div>
+            <div>
+              <div class="wt-section-label">Wild Pokemon</div>
+              <ul class="wt-pokemon-list">
+                <li><span class="wt-pokemon-name">None (city)</span><span class="rarity rarity-vr">N/A</span></li>
+              </ul>
+            </div>
+            <div class="wt-tips-col">
+              <div class="wt-section-label">Trainer Tips</div>
+              <ul class="wt-tips-list">
+                <li>Stock up on Potions and Poke Balls before heading north — Viridian Forest is long with no healing.</li>
+                <li>The Gym Leader here is Giovanni. You cannot challenge him until all 7 other badges are collected.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 04 Route 2 -->
+        <div class="wt-card">
+          <div class="wt-card-header">
+            <span class="wt-card-num">04</span>
+            <h3 class="wt-card-title">Route 2</h3>
+          </div>
+          <div class="wt-card-body">
+            <p class="wt-desc">Route 2 wraps around both sides of Viridian Forest. The southern stretch connects to Viridian City; the northern exit leads to Pewter City. A gatehouse midway through holds an NPC who will trade HM05 Flash — useful for Rock Tunnel later.</p>
+            <div>
+              <div class="wt-section-label">Key Items</div>
+              <ul class="wt-items-list">
+                <li>HM05 Flash (from Oak's aide in gatehouse — requires 10 caught Pokemon)</li>
+                <li>Potion, Antidote (hidden in trees on both sides)</li>
+                <li>Ether (hidden, north section)</li>
+              </ul>
+            </div>
+            <div>
+              <div class="wt-section-label">Wild Pokemon</div>
+              <ul class="wt-pokemon-list">
+                <li><span class="wt-pokemon-name">Pidgey</span><span class="rarity rarity-common">Common</span></li>
+                <li><span class="wt-pokemon-name">Rattata</span><span class="rarity rarity-common">Common</span></li>
+                <li><span class="wt-pokemon-name">Nidoran♀</span><span class="rarity rarity-rare">Rare</span></li>
+                <li><span class="wt-pokemon-name">Nidoran♂</span><span class="rarity rarity-rare">Rare</span></li>
+              </ul>
+            </div>
+            <div class="wt-tips-col">
+              <div class="wt-section-label">Trainer Tips</div>
+              <ul class="wt-tips-list">
+                <li>Make sure you have 10 Pokemon registered in your Pokedex before passing through the gatehouse — the Flash HM is practically required for Rock Tunnel.</li>
+                <li>You can't access the north side of Route 2 (and its hidden items) until you have HM01 Cut much later.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 05 Viridian Forest -->
+        <div class="wt-card">
+          <div class="wt-card-header">
+            <span class="wt-card-num">05</span>
+            <h3 class="wt-card-title">Viridian Forest</h3>
+          </div>
+          <div class="wt-card-body">
+            <p class="wt-desc">A maze-like Bug-type forest packed with trainers. Pikachu appears at low odds — worth hunting if you want the series mascot. Several items are hidden in the grass and trees.</p>
+            <div>
+              <div class="wt-section-label">Key Items</div>
+              <ul class="wt-items-list">
+                <li>Antidote (hidden)</li>
+                <li>Potion (hidden)</li>
+                <li>Poke Ball (hidden)</li>
+              </ul>
+            </div>
+            <div>
+              <div class="wt-section-label">Wild Pokemon</div>
+              <ul class="wt-pokemon-list">
+                <li><span class="wt-pokemon-name">Caterpie</span><span class="rarity rarity-common">Common</span></li>
+                <li><span class="wt-pokemon-name">Metapod</span><span class="rarity rarity-common">Common</span></li>
+                <li><span class="wt-pokemon-name">Weedle</span><span class="rarity rarity-common">Common</span></li>
+                <li><span class="wt-pokemon-name">Kakuna</span><span class="rarity rarity-common">Common</span></li>
+                <li><span class="wt-pokemon-name">Pikachu</span><span class="rarity rarity-rare">Rare</span></li>
+              </ul>
+            </div>
+            <div class="wt-tips-col">
+              <div class="wt-section-label">Trainer Tips</div>
+              <ul class="wt-tips-list">
+                <li>Bug moves do nothing useful against Brock — Butterfree's Confusion (Normal/Psy) is your best bet if you evolve Caterpie.</li>
+                <li>Pikachu has a ~5% rate. Use Repel to suppress Caterpie/Weedle encounters while hunting it.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 06 Pewter City -->
+        <div class="wt-card">
+          <div class="wt-card-header">
+            <span class="wt-card-num">06</span>
+            <h3 class="wt-card-title">Pewter City &mdash; Gym Leader: Brock</h3>
+          </div>
+          <div class="wt-card-body">
+            <p class="wt-desc">Home of the first gym. Brock uses Rock/Ground types. Visit the Pewter Museum before leaving — a scientist in back gives you an Old Amber, which can be revived into Aerodactyl at Cinnabar Island much later.</p>
+            <div>
+              <div class="wt-section-label">Key Items</div>
+              <ul class="wt-items-list">
+                <li>Boulder Badge (from Brock)</li>
+                <li>TM39 Rock Tomb (from Brock)</li>
+                <li>Old Amber (from Museum scientist — use Cut to reach him)</li>
+              </ul>
+            </div>
+            <div>
+              <div class="wt-section-label">Brock's Team</div>
+              <ul class="wt-pokemon-list">
+                <li><span class="wt-pokemon-name">Geodude Lv 12</span><span class="rarity rarity-common">Rock/Gnd</span></li>
+                <li><span class="wt-pokemon-name">Onix Lv 14</span><span class="rarity rarity-rare">Rock/Gnd</span></li>
+              </ul>
+            </div>
+            <div class="wt-tips-col">
+              <div class="wt-section-label">Trainer Tips</div>
+              <ul class="wt-tips-list">
+                <li>Water and Grass are 4x effective against Onix. Bulbasaur and Squirtle trivialize this fight.</li>
+                <li>Charmander players: grind Butterfree to Lv 12 for Confusion. It deals neutral damage and is your best realistic option.</li>
+                <li>Onix's Special Defense is very low despite its bulk. Always hit with special moves.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 07 Route 3 -->
+        <div class="wt-card">
+          <div class="wt-card-header">
+            <span class="wt-card-num">07</span>
+            <h3 class="wt-card-title">Route 3</h3>
+          </div>
+          <div class="wt-card-body">
+            <p class="wt-desc">A long trainer gauntlet running east from Pewter toward Mt. Moon. First chance to catch Jigglypuff. Both Nidoran genders are available here — Moon Stone evolutions make them strong end-game Pokemon.</p>
+            <div>
+              <div class="wt-section-label">Key Items</div>
+              <ul class="wt-items-list">
+                <li>Various TMs and healing items from trainer battles</li>
+              </ul>
+            </div>
+            <div>
+              <div class="wt-section-label">Wild Pokemon</div>
+              <ul class="wt-pokemon-list">
+                <li><span class="wt-pokemon-name">Spearow</span><span class="rarity rarity-common">Common</span></li>
+                <li><span class="wt-pokemon-name">Sandshrew</span><span class="rarity rarity-common">Common</span></li>
+                <li><span class="wt-pokemon-name">Nidoran♀</span><span class="rarity rarity-common">Common</span></li>
+                <li><span class="wt-pokemon-name">Nidoran♂</span><span class="rarity rarity-common">Common</span></li>
+                <li><span class="wt-pokemon-name">Jigglypuff</span><span class="rarity rarity-rare">Rare</span></li>
+              </ul>
+            </div>
+            <div class="wt-tips-col">
+              <div class="wt-section-label">Trainer Tips</div>
+              <ul class="wt-tips-list">
+                <li>Nidoking and Nidoqueen are among the best Pokemon in LeafGreen — catch a Nidoran pair here and save your Moon Stones.</li>
+                <li>Sandshrew is a LeafGreen exclusive. Its evolution Sandslash has great Defense and Slash — a solid physical attacker.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 08 Mt. Moon -->
+        <div class="wt-card">
+          <div class="wt-card-header">
+            <span class="wt-card-num">08</span>
+            <h3 class="wt-card-title">Mt. Moon</h3>
+          </div>
+          <div class="wt-card-body">
+            <p class="wt-desc">A two-floor cave with multiple Team Rocket encounters. The exit is guarded by a Super Nerd who forces you to choose one of two Fossils: Dome (Kabuto) or Helix (Omanyte). You can only take one.</p>
+            <div>
+              <div class="wt-section-label">Key Items</div>
+              <ul class="wt-items-list">
+                <li>TM46 Thief (from Rocket Grunt)</li>
+                <li>Dome Fossil OR Helix Fossil (choose one at exit)</li>
+                <li>Moon Stone x2 (hidden on floor 2)</li>
+                <li>Escape Rope, Repel (hidden)</li>
+              </ul>
+            </div>
+            <div>
+              <div class="wt-section-label">Wild Pokemon</div>
+              <ul class="wt-pokemon-list">
+                <li><span class="wt-pokemon-name">Zubat</span><span class="rarity rarity-common">Common</span></li>
+                <li><span class="wt-pokemon-name">Geodude</span><span class="rarity rarity-common">Common</span></li>
+                <li><span class="wt-pokemon-name">Paras</span><span class="rarity rarity-rare">Rare</span></li>
+                <li><span class="wt-pokemon-name">Clefairy</span><span class="rarity rarity-vr">Very Rare</span></li>
+              </ul>
+            </div>
+            <div class="wt-tips-col">
+              <div class="wt-section-label">Trainer Tips</div>
+              <ul class="wt-tips-list">
+                <li>Clefairy evolves with a Moon Stone into Clefable — one of the most versatile Normal-types in the game. Worth the hunt.</li>
+                <li>Helix → Omanyte (Water/Rock, better movepool). Dome → Kabuto (Rock/Water, better Speed/Attack). Both are good.</li>
+                <li>Use Repel on floor 2 to suppress Zubat encounters while hunting Clefairy near the upper ladders.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 09 Route 4 -->
+        <div class="wt-card">
+          <div class="wt-card-header">
+            <span class="wt-card-num">09</span>
+            <h3 class="wt-card-title">Route 4</h3>
+          </div>
+          <div class="wt-card-body">
+            <p class="wt-desc">A short route flanking Mt. Moon on both sides. The east end near the Pokemon Center has an NPC selling a Magikarp for 500P — a bargain for what evolves into Gyarados at level 20.</p>
+            <div>
+              <div class="wt-section-label">Key Items</div>
+              <ul class="wt-items-list">
+                <li>Magikarp for 500P (from NPC inside the Pokemon Center)</li>
+                <li>TM05 Roar (hidden on west side)</li>
+              </ul>
+            </div>
+            <div>
+              <div class="wt-section-label">Wild Pokemon</div>
+              <ul class="wt-pokemon-list">
+                <li><span class="wt-pokemon-name">Spearow</span><span class="rarity rarity-common">Common</span></li>
+                <li><span class="wt-pokemon-name">Rattata</span><span class="rarity rarity-common">Common</span></li>
+                <li><span class="wt-pokemon-name">Sandshrew</span><span class="rarity rarity-rare">Rare</span></li>
+              </ul>
+            </div>
+            <div class="wt-tips-col">
+              <div class="wt-section-label">Trainer Tips</div>
+              <ul class="wt-tips-list">
+                <li>Buy the Magikarp. 500P is trivial and Gyarados becomes one of the strongest Pokemon you'll have by mid-game.</li>
+                <li>Leave Magikarp in the Day-Care (Route 5) to level it painlessly toward evolution if you don't want to grind it yourself.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10 Cerulean City -->
+        <div class="wt-card">
+          <div class="wt-card-header">
+            <span class="wt-card-num">10</span>
+            <h3 class="wt-card-title">Cerulean City &mdash; Gym Leader: Misty</h3>
+          </div>
+          <div class="wt-card-body">
+            <p class="wt-desc">Second gym. Misty's Starmie is fast with high Special Attack. Before challenging her, visit Routes 24 &amp; 25 to the north, beat Nugget Bridge, and collect the S.S. Anne Ticket from Bill at Sea Cottage. Track down the Rocket Grunt north of the city for TM28 Dig.</p>
+            <div>
+              <div class="wt-section-label">Key Items</div>
+              <ul class="wt-items-list">
+                <li>Cascade Badge (from Misty)</li>
+                <li>TM03 Water Pulse (from Misty)</li>
+                <li>Bike Voucher (from man in house south of gym)</li>
+                <li>TM28 Dig (from Rocket Grunt near the gym)</li>
+              </ul>
+            </div>
+            <div>
+              <div class="wt-section-label">Misty's Team</div>
+              <ul class="wt-pokemon-list">
+                <li><span class="wt-pokemon-name">Staryu Lv 18</span><span class="rarity rarity-common">Water</span></li>
+                <li><span class="wt-pokemon-name">Starmie Lv 21</span><span class="rarity rarity-rare">Water/Psy</span></li>
+              </ul>
+            </div>
+            <div class="wt-tips-col">
+              <div class="wt-section-label">Trainer Tips</div>
+              <ul class="wt-tips-list">
+                <li>Grass and Electric wreck this gym. Pikachu from Viridian Forest was built for this fight.</li>
+                <li>Starmie can cause confusion with Water Pulse — bring multiple Pokemon and rotate if confused.</li>
+                <li>The Bike Voucher is redeemable at the Bike Shop in Vermilion for a free Bicycle. Don't skip it.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 11 Routes 24 & 25 / Sea Cottage -->
+        <div class="wt-card">
+          <div class="wt-card-header">
+            <span class="wt-card-num">11</span>
+            <h3 class="wt-card-title">Routes 24 &amp; 25 / Sea Cottage</h3>
+          </div>
+          <div class="wt-card-body">
+            <p class="wt-desc">North of Cerulean. Beat the five-trainer Nugget Bridge gauntlet on Route 24 (including a Rocket disguised as the sixth "trainer") then follow Route 25 east to Bill's Sea Cottage. Help Bill escape his Pokemon transformation to earn the S.S. Anne Ticket.</p>
+            <div>
+              <div class="wt-section-label">Key Items</div>
+              <ul class="wt-items-list">
+                <li>Nugget (reward for Nugget Bridge — sell for 5000P)</li>
+                <li>S.S. Anne Ticket (from Bill at Sea Cottage)</li>
+                <li>TM45 Attract (from girl on Route 25)</li>
+              </ul>
+            </div>
+            <div>
+              <div class="wt-section-label">Wild Pokemon</div>
+              <ul class="wt-pokemon-list">
+                <li><span class="wt-pokemon-name">Oddish</span><span class="rarity rarity-common">Common</span></li>
+                <li><span class="wt-pokemon-name">Abra</span><span class="rarity rarity-rare">Rare</span></li>
+                <li><span class="wt-pokemon-name">Slowpoke</span><span class="rarity rarity-rare">Rare</span></li>
+              </ul>
+            </div>
+            <div class="wt-tips-col">
+              <div class="wt-section-label">Trainer Tips</div>
+              <ul class="wt-tips-list">
+                <li>Abra Teleports on turn 1 — throw a Poke Ball immediately without attacking.</li>
+                <li>Slowpoke is a LeafGreen exclusive that evolves into Slowbro, a bulky Water/Psychic attacker — worth catching early.</li>
+                <li>Oddish is plentiful here; it evolves into Vileplume (via Leaf Stone) or Bellossom — solid Grass coverage for the rest of the game.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 12 Route 5 -->
+        <div class="wt-card">
+          <div class="wt-card-header">
+            <span class="wt-card-num">12</span>
+            <h3 class="wt-card-title">Route 5</h3>
+          </div>
+          <div class="wt-card-body">
+            <p class="wt-desc">Runs south from Cerulean City toward the Underground Path (a tunnel connecting to Route 6). The Day-Care Centre sits just off the route — drop off a Pokemon to level it passively while you walk.</p>
+            <div>
+              <div class="wt-section-label">Key Items</div>
+              <ul class="wt-items-list">
+                <li>TM05 Roar (from Day-Care aide outside the centre)</li>
+                <li>Max Ether (hidden in grass)</li>
+              </ul>
+            </div>
+            <div>
+              <div class="wt-section-label">Wild Pokemon</div>
+              <ul class="wt-pokemon-list">
+                <li><span class="wt-pokemon-name">Meowth</span><span class="rarity rarity-common">Common</span></li>
+                <li><span class="wt-pokemon-name">Mankey</span><span class="rarity rarity-common">Common</span></li>
+                <li><span class="wt-pokemon-name">Oddish</span><span class="rarity rarity-common">Common</span></li>
+                <li><span class="wt-pokemon-name">Abra</span><span class="rarity rarity-rare">Rare</span></li>
+              </ul>
+            </div>
+            <div class="wt-tips-col">
+              <div class="wt-section-label">Trainer Tips</div>
+              <ul class="wt-tips-list">
+                <li>Leave Magikarp in the Day-Care here and forget about it — by the time you reach Vermilion it may already be close to level 20 and ready to evolve into Gyarados.</li>
+                <li>Mankey evolves into Primeape at Lv 28 — a strong Fighting-type that stays useful all game.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 13 Route 6 -->
+        <div class="wt-card">
+          <div class="wt-card-header">
+            <span class="wt-card-num">13</span>
+            <h3 class="wt-card-title">Route 6</h3>
+          </div>
+          <div class="wt-card-body">
+            <p class="wt-desc">The south half of the Cerulean–Vermilion corridor. Exits from the Underground Path tunnel and feeds directly into the north gate of Vermilion City. Several trainers line the route for easy experience.</p>
+            <div>
+              <div class="wt-section-label">Key Items</div>
+              <ul class="wt-items-list">
+                <li>Elixir (hidden in the tall grass)</li>
+              </ul>
+            </div>
+            <div>
+              <div class="wt-section-label">Wild Pokemon</div>
+              <ul class="wt-pokemon-list">
+                <li><span class="wt-pokemon-name">Meowth</span><span class="rarity rarity-common">Common</span></li>
+                <li><span class="wt-pokemon-name">Mankey</span><span class="rarity rarity-common">Common</span></li>
+                <li><span class="wt-pokemon-name">Oddish</span><span class="rarity rarity-common">Common</span></li>
+                <li><span class="wt-pokemon-name">Psyduck</span><span class="rarity rarity-rare">Rare</span></li>
+              </ul>
+            </div>
+            <div class="wt-tips-col">
+              <div class="wt-section-label">Trainer Tips</div>
+              <ul class="wt-tips-list">
+                <li>Psyduck is rare here but it's a LeafGreen exclusive that evolves into Golduck — a reliable Water-type if you don't want to use Gyarados or Starmie.</li>
+                <li>Aim for level 20–22 before boarding the S.S. Anne so your team can handle the trainer density on the ship.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 14 Vermilion City / S.S. Anne -->
+        <div class="wt-card">
+          <div class="wt-card-header">
+            <span class="wt-card-num">14</span>
+            <h3 class="wt-card-title">Vermilion City / S.S. Anne &mdash; Gym Leader: Lt. Surge</h3>
+          </div>
+          <div class="wt-card-body">
+            <p class="wt-desc">Port city with the S.S. Anne docked in the harbor. Board the ship to battle trainers across many cabins, find items, and get HM01 Cut from the Captain. Use Cut to trim the bush blocking the Gym entrance. Lt. Surge's Raichu is fast — a Ground-type counters it completely.</p>
+            <div>
+              <div class="wt-section-label">Key Items</div>
+              <ul class="wt-items-list">
+                <li>HM01 Cut (from S.S. Anne Captain)</li>
+                <li>Thunder Badge (from Lt. Surge)</li>
+                <li>TM34 Shock Wave (from Lt. Surge)</li>
+                <li>Bicycle (redeem Bike Voucher at the Bike Shop)</li>
+                <li>Old Rod (from Fisherman near the gym)</li>
+                <li>Multiple TMs and healing items on the S.S. Anne</li>
+              </ul>
+            </div>
+            <div>
+              <div class="wt-section-label">Lt. Surge's Team</div>
+              <ul class="wt-pokemon-list">
+                <li><span class="wt-pokemon-name">Voltorb Lv 21</span><span class="rarity rarity-common">Electric</span></li>
+                <li><span class="wt-pokemon-name">Pikachu Lv 18</span><span class="rarity rarity-common">Electric</span></li>
+                <li><span class="wt-pokemon-name">Raichu Lv 24</span><span class="rarity rarity-rare">Electric</span></li>
+              </ul>
+            </div>
+            <div class="wt-tips-col">
+              <div class="wt-section-label">Trainer Tips</div>
+              <ul class="wt-tips-list">
+                <li>Ground-types are immune to all Electric moves. Sandshrew (Route 3) or Diglett from Diglett's Cave south of the city make this gym trivial.</li>
+                <li>The trash-can switch puzzle is randomized each attempt. Search cans in adjacent pairs — both switches are always near each other.</li>
+                <li>The S.S. Anne leaves permanently after you get Cut. Loot every cabin before talking to the Captain.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 15 Route 11 -->
+        <div class="wt-card">
+          <div class="wt-card-header">
+            <span class="wt-card-num">15</span>
+            <h3 class="wt-card-title">Route 11</h3>
+          </div>
+          <div class="wt-card-body">
+            <p class="wt-desc">Runs east from Vermilion toward Route 12. Blocked by a sleeping Snorlax on Route 12 — you'll need the Poke Flute to pass later. The upper gatehouse has an Oak aide who gives you an item for catching enough Pokemon.</p>
+            <div>
+              <div class="wt-section-label">Key Items</div>
+              <ul class="wt-items-list">
+                <li>Item Finder (from Oak's aide in upper gatehouse — requires 30 caught Pokemon)</li>
+              </ul>
+            </div>
+            <div>
+              <div class="wt-section-label">Wild Pokemon</div>
+              <ul class="wt-pokemon-list">
+                <li><span class="wt-pokemon-name">Spearow</span><span class="rarity rarity-common">Common</span></li>
+                <li><span class="wt-pokemon-name">Ekans</span><span class="rarity rarity-common">Common</span></li>
+                <li><span class="wt-pokemon-name">Drowzee</span><span class="rarity rarity-rare">Rare</span></li>
+              </ul>
+            </div>
+            <div class="wt-tips-col">
+              <div class="wt-section-label">Trainer Tips</div>
+              <ul class="wt-tips-list">
+                <li>Ekans is a LeafGreen exclusive — Arbok has decent stats and access to useful moves. Worth a catch for the Pokedex.</li>
+                <li>Drowzee evolves into Hypno, a solid Psychic-type. It's rarer but worth hunting if you don't have a Psychic-type yet.</li>
+                <li>You can't progress east past the Snorlax on Route 12 yet — head back and go north toward Lavender Town instead.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 16 Lavender Town -->
+        <div class="wt-card">
+          <div class="wt-card-header">
+            <span class="wt-card-num">16</span>
+            <h3 class="wt-card-title">Lavender Town</h3>
+          </div>
+          <div class="wt-card-body">
+            <p class="wt-desc">The eerie ghost-type town built around Pokemon Tower, a graveyard for fallen Pokemon. Team Rocket has seized the tower and a ghost blocks the top floors. You need the Silph Scope (from Celadon's Rocket Hideout) to reveal the ghost — it's a Marowak.</p>
+            <div>
+              <div class="wt-section-label">Key Items</div>
+              <ul class="wt-items-list">
+                <li>Silph Scope required to reveal ghost (get from Rocket Hideout in Celadon first)</li>
+                <li>Poke Flute (from Mr. Fuji on Pokemon Tower 7F)</li>
+                <li>Escape Rope, Revive (hidden in Pokemon Tower)</li>
+              </ul>
+            </div>
+            <div>
+              <div class="wt-section-label">Wild Pokemon (Pokemon Tower)</div>
+              <ul class="wt-pokemon-list">
+                <li><span class="wt-pokemon-name">Gastly</span><span class="rarity rarity-common">Common</span></li>
+                <li><span class="wt-pokemon-name">Haunter</span><span class="rarity rarity-rare">Rare</span></li>
+                <li><span class="wt-pokemon-name">Cubone</span><span class="rarity rarity-rare">Rare</span></li>
+              </ul>
+            </div>
+            <div class="wt-tips-col">
+              <div class="wt-section-label">Trainer Tips</div>
+              <ul class="wt-tips-list">
+                <li>You can't complete Pokemon Tower until you get the Silph Scope — head to Celadon first, clear the Rocket Hideout, then return.</li>
+                <li>Haunter is a LeafGreen exclusive and an excellent Ghost/Poison attacker. Catch it with the Silph Scope equipped.</li>
+                <li>The Marowak ghost cannot be caught — do not waste Poke Balls. Defeat it to proceed.</li>
+                <li>The Poke Flute is your key to waking the Snorlax blocking Routes 12 and 16.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 17 Rock Tunnel / Routes 9 & 10 -->
+        <div class="wt-card">
+          <div class="wt-card-header">
+            <span class="wt-card-num">17</span>
+            <h3 class="wt-card-title">Rock Tunnel / Routes 9 &amp; 10</h3>
+          </div>
+          <div class="wt-card-body">
+            <p class="wt-desc">Route 9 runs east from Cerulean toward the Rock Tunnel entrance on Route 10. Rock Tunnel is a two-floor pitch-dark cave — bring Flash or budget for a lot of fumbling. Route 10's south section leads to Lavender Town.</p>
+            <div>
+              <div class="wt-section-label">Key Items</div>
+              <ul class="wt-items-list">
+                <li>HM05 Flash (Route 2 aide — needed here)</li>
+                <li>Repel x5+ (highly recommended)</li>
+                <li>Revive, Escape Rope (hidden in tunnel)</li>
+              </ul>
+            </div>
+            <div>
+              <div class="wt-section-label">Wild Pokemon</div>
+              <ul class="wt-pokemon-list">
+                <li><span class="wt-pokemon-name">Zubat</span><span class="rarity rarity-common">Common</span></li>
+                <li><span class="wt-pokemon-name">Geodude</span><span class="rarity rarity-common">Common</span></li>
+                <li><span class="wt-pokemon-name">Machop</span><span class="rarity rarity-rare">Rare</span></li>
+                <li><span class="wt-pokemon-name">Onix</span><span class="rarity rarity-rare">Rare</span></li>
+              </ul>
+            </div>
+            <div class="wt-tips-col">
+              <div class="wt-section-label">Trainer Tips</div>
+              <ul class="wt-tips-list">
+                <li>Flash lowers enemy accuracy to near-zero and makes the tunnel far less punishing. Get it from the Route 2 aide before entering.</li>
+                <li>Machop evolves into Machoke and then Machamp — one of the best Fighting-types and worth the effort to find.</li>
+                <li>Stock Repels before entering. Zubat encounters every few steps without them will drain your PP quickly.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 18 Celadon City -->
+        <div class="wt-card">
+          <div class="wt-card-header">
+            <span class="wt-card-num">18</span>
+            <h3 class="wt-card-title">Celadon City &mdash; Gym Leader: Erika</h3>
+          </div>
+          <div class="wt-card-body">
+            <p class="wt-desc">The shopping hub of Kanto. The Celadon Department Store sells nearly every evolution stone and TM in the game. The Team Rocket Game Corner hides a basement hideout where you fight Giovanni for the Silph Scope. Erika's Gym uses pure Grass types.</p>
+            <div>
+              <div class="wt-section-label">Key Items</div>
+              <ul class="wt-items-list">
+                <li>Rainbow Badge (from Erika)</li>
+                <li>TM19 Giga Drain (from Erika)</li>
+                <li>Silph Scope (from Giovanni in Rocket Hideout)</li>
+                <li>Eevee (free from top floor of Celadon Mansion)</li>
+                <li>Evolution Stones (at Department Store)</li>
+                <li>TM02, TM07, TM12, TM36 (Department Store)</li>
+              </ul>
+            </div>
+            <div>
+              <div class="wt-section-label">Erika's Team</div>
+              <ul class="wt-pokemon-list">
+                <li><span class="wt-pokemon-name">Victreebel Lv 29</span><span class="rarity rarity-common">Grass/Psn</span></li>
+                <li><span class="wt-pokemon-name">Tangela Lv 24</span><span class="rarity rarity-common">Grass</span></li>
+                <li><span class="wt-pokemon-name">Vileplume Lv 29</span><span class="rarity rarity-rare">Grass/Psn</span></li>
+              </ul>
+            </div>
+            <div class="wt-tips-col">
+              <div class="wt-section-label">Trainer Tips</div>
+              <ul class="wt-tips-list">
+                <li>Fire, Ice, Flying, and Poison all wreck Erika's team. Charmander players finally have an easy gym.</li>
+                <li>Clear the Rocket Hideout before challenging Erika — you need the Silph Scope to finish Pokemon Tower in Lavender Town.</li>
+                <li>Eevee from the Mansion roof can be evolved with stones from the store into Vaporeon, Jolteon, or Flareon — all strong choices.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 19 Routes 16, 17 & 18 -->
+        <div class="wt-card">
+          <div class="wt-card-header">
+            <span class="wt-card-num">19</span>
+            <h3 class="wt-card-title">Routes 16, 17 &amp; 18</h3>
+          </div>
+          <div class="wt-card-body">
+            <p class="wt-desc">The western cycling road running from Celadon south toward Fuchsia City. Route 16 has a sleeping Snorlax blocking access — wake it with the Poke Flute. The Cycling Road (Route 17) is fast on the Bicycle and packed with bikers worth good EXP.</p>
+            <div>
+              <div class="wt-section-label">Key Items</div>
+              <ul class="wt-items-list">
+                <li>HM02 Fly (from girl in house west of Snorlax on Route 16)</li>
+                <li>Rare Candy (hidden on Route 17)</li>
+                <li>TM50 Overheat (hidden on Route 17)</li>
+              </ul>
+            </div>
+            <div>
+              <div class="wt-section-label">Wild Pokemon</div>
+              <ul class="wt-pokemon-list">
+                <li><span class="wt-pokemon-name">Doduo</span><span class="rarity rarity-common">Common</span></li>
+                <li><span class="wt-pokemon-name">Rattata</span><span class="rarity rarity-common">Common</span></li>
+                <li><span class="wt-pokemon-name">Fearow</span><span class="rarity rarity-rare">Rare</span></li>
+              </ul>
+            </div>
+            <div class="wt-tips-col">
+              <div class="wt-section-label">Trainer Tips</div>
+              <ul class="wt-tips-list">
+                <li>HM02 Fly is one of the most important HMs in the game — teaches your flyer to teleport back to any city instantly.</li>
+                <li>The Snorlax here (Lv 30) can be caught with enough Poke Balls after wearing it down. It's a superb tank for your team.</li>
+                <li>Doduo evolves into Dodrio at Lv 31 — a fast Normal/Flying physical attacker, solid if you need a second flyer.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 20 Fuchsia City / Safari Zone -->
+        <div class="wt-card">
+          <div class="wt-card-header">
+            <span class="wt-card-num">20</span>
+            <h3 class="wt-card-title">Fuchsia City / Safari Zone &mdash; Gym Leader: Koga</h3>
+          </div>
+          <div class="wt-card-body">
+            <p class="wt-desc">Home of the Safari Zone — the only place to catch Tauros, Kangaskhan, Scyther (FireRed) / Pinsir (LeafGreen), and Chansey. Navigate the Zone to retrieve the Gold Teeth, which you trade to the Warden for HM04 Strength. Koga's gym uses invisible walls and Poison types.</p>
+            <div>
+              <div class="wt-section-label">Key Items</div>
+              <ul class="wt-items-list">
+                <li>Soul Badge (from Koga)</li>
+                <li>TM27 Return (from Koga)</li>
+                <li>HM04 Strength (from Safari Zone Warden — trade Gold Teeth)</li>
+                <li>HM03 Surf (in Safari Zone Area 3 house)</li>
+                <li>Gold Teeth (found in Safari Zone)</li>
+              </ul>
+            </div>
+            <div>
+              <div class="wt-section-label">Safari Zone Pokemon</div>
+              <ul class="wt-pokemon-list">
+                <li><span class="wt-pokemon-name">Pinsir (LG)</span><span class="rarity rarity-rare">Rare</span></li>
+                <li><span class="wt-pokemon-name">Tauros</span><span class="rarity rarity-rare">Rare</span></li>
+                <li><span class="wt-pokemon-name">Kangaskhan</span><span class="rarity rarity-rare">Rare</span></li>
+                <li><span class="wt-pokemon-name">Chansey</span><span class="rarity rarity-vr">Very Rare</span></li>
+              </ul>
+            </div>
+            <div class="wt-tips-col">
+              <div class="wt-section-label">Trainer Tips</div>
+              <ul class="wt-tips-list">
+                <li>HM03 Surf is in the Safari Zone and is mandatory for progression — don't leave without it.</li>
+                <li>Pinsir is a LeafGreen exclusive with great Attack. Throw Bait to make it easier to catch, then toss Balls.</li>
+                <li>Koga uses Smokescreen and self-destruct. Bring Antidotes and don't lead with a weak Pokemon.</li>
+                <li>Koga's Team: Koffing Lv 37, Muk Lv 39, Koffing Lv 37, Weezing Lv 43. Ground types clean this gym.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 21 Routes 12, 13, 14 & 15 -->
+        <div class="wt-card">
+          <div class="wt-card-header">
+            <span class="wt-card-num">21</span>
+            <h3 class="wt-card-title">Routes 12, 13, 14 &amp; 15</h3>
+          </div>
+          <div class="wt-card-body">
+            <p class="wt-desc">A long coastal loop connecting Lavender Town south to Fuchsia City. Route 12 has a second sleeping Snorlax — wake it with the Poke Flute. These routes are heavy with Fishers and Bird Keepers; good grinding stretch before the back half of the game.</p>
+            <div>
+              <div class="wt-section-label">Key Items</div>
+              <ul class="wt-items-list">
+                <li>Good Rod (from Fisherman on Route 12)</li>
+                <li>TM11 Sunny Day (Route 13, hidden)</li>
+                <li>Various Berries from Berry trees along all routes</li>
+              </ul>
+            </div>
+            <div>
+              <div class="wt-section-label">Wild Pokemon</div>
+              <ul class="wt-pokemon-list">
+                <li><span class="wt-pokemon-name">Venonat</span><span class="rarity rarity-common">Common</span></li>
+                <li><span class="wt-pokemon-name">Gloom</span><span class="rarity rarity-common">Common</span></li>
+                <li><span class="wt-pokemon-name">Ditto</span><span class="rarity rarity-rare">Rare</span></li>
+                <li><span class="wt-pokemon-name">Scyther (FR) / Pinsir (LG)</span><span class="rarity rarity-vr">Very Rare</span></li>
+              </ul>
+            </div>
+            <div class="wt-tips-col">
+              <div class="wt-section-label">Trainer Tips</div>
+              <ul class="wt-tips-list">
+                <li>The second Snorlax (Route 12) is also Lv 30 and catchable — useful if you missed the first one on Route 16.</li>
+                <li>Ditto is a handy utility Pokemon for breeding later. It's rare on these routes but worth grabbing for Pokedex completion.</li>
+                <li>The Good Rod unlocks fishing for Poliwag and Krabby — both useful if you need Water coverage.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 22 Routes 19 & 20 -->
+        <div class="wt-card">
+          <div class="wt-card-header">
+            <span class="wt-card-num">22</span>
+            <h3 class="wt-card-title">Routes 19 &amp; 20</h3>
+          </div>
+          <div class="wt-card-body">
+            <p class="wt-desc">The open-water Surfing routes south of Fuchsia City leading to Cinnabar Island. Long stretches of ocean filled with Tentacool. The Seafoam Islands sit mid-route — a two-entrance cave where Articuno lives deep inside.</p>
+            <div>
+              <div class="wt-section-label">Key Items</div>
+              <ul class="wt-items-list">
+                <li>Articuno (legendary — deep in Seafoam Islands)</li>
+                <li>Various items hidden in Seafoam Islands</li>
+              </ul>
+            </div>
+            <div>
+              <div class="wt-section-label">Wild Pokemon</div>
+              <ul class="wt-pokemon-list">
+                <li><span class="wt-pokemon-name">Tentacool</span><span class="rarity rarity-common">Common</span></li>
+                <li><span class="wt-pokemon-name">Tentacruel</span><span class="rarity rarity-rare">Rare</span></li>
+                <li><span class="wt-pokemon-name">Horsea</span><span class="rarity rarity-rare">Rare (fishing)</span></li>
+              </ul>
+            </div>
+            <div class="wt-tips-col">
+              <div class="wt-section-label">Trainer Tips</div>
+              <ul class="wt-tips-list">
+                <li>Tentacruel has surprising bulk and solid Special stats — it can carry you through water routes if you don't have a better Water-type.</li>
+                <li>Articuno (Lv 50) in Seafoam Islands is catchable now — bring Ultra Balls, weaken it carefully, and save before the encounter.</li>
+                <li>Seafoam Islands requires Strength and Surf to fully navigate. Push the boulders into holes in the correct order to block the underground currents.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 23 Cinnabar Island / Pokemon Mansion -->
+        <div class="wt-card">
+          <div class="wt-card-header">
+            <span class="wt-card-num">23</span>
+            <h3 class="wt-card-title">Cinnabar Island / Pok&eacute;mon Mansion &mdash; Gym Leader: Blaine</h3>
+          </div>
+          <div class="wt-card-body">
+            <p class="wt-desc">Volcanic island with a Research Lab that revives Fossils and the Pokemon Mansion — a burned-out building where you find the Secret Key to unlock Blaine's Gym. The Lab also gives you a free Hitmonchan. Blaine uses Fire types.</p>
+            <div>
+              <div class="wt-section-label">Key Items</div>
+              <ul class="wt-items-list">
+                <li>Volcano Badge (from Blaine)</li>
+                <li>TM38 Fire Blast (from Blaine)</li>
+                <li>Secret Key (in Pokemon Mansion — unlocks Gym)</li>
+                <li>Hitmonchan (free from dojo in the Research Lab area)</li>
+                <li>Fossil revival (bring Dome/Helix/Old Amber to the Lab)</li>
+              </ul>
+            </div>
+            <div>
+              <div class="wt-section-label">Blaine's Team</div>
+              <ul class="wt-pokemon-list">
+                <li><span class="wt-pokemon-name">Growlithe Lv 42</span><span class="rarity rarity-common">Fire</span></li>
+                <li><span class="wt-pokemon-name">Ponyta Lv 40</span><span class="rarity rarity-common">Fire</span></li>
+                <li><span class="wt-pokemon-name">Rapidash Lv 42</span><span class="rarity rarity-rare">Fire</span></li>
+                <li><span class="wt-pokemon-name">Arcanine Lv 47</span><span class="rarity rarity-vr">Fire</span></li>
+              </ul>
+            </div>
+            <div class="wt-tips-col">
+              <div class="wt-section-label">Trainer Tips</div>
+              <ul class="wt-tips-list">
+                <li>Water and Rock obliterate this gym. Gyarados, Vaporeon, or your Fossil Pokemon (Omastar / Kabutops) are ideal.</li>
+                <li>Magmar is a LeafGreen exclusive found in the Pokemon Mansion — a strong Fire-type if you don't have one.</li>
+                <li>Get your Fossils revived here before moving on — Aerodactyl (from Old Amber) is a fast Rock/Flying attacker worth having.</li>
+                <li>Hitmonchan is a LeafGreen exclusive dojo gift. Strong Punch-move coverage makes it a great team addition.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 24 Route 21 -->
+        <div class="wt-card">
+          <div class="wt-card-header">
+            <span class="wt-card-num">24</span>
+            <h3 class="wt-card-title">Route 21</h3>
+          </div>
+          <div class="wt-card-body">
+            <p class="wt-desc">A short Surf route between Cinnabar Island and Pallet Town. Tangela appears here — one of the few places in the game to catch it. Mostly used as a fast travel route to Pallet and Oak's lab for a quick storyline checkpoint.</p>
+            <div>
+              <div class="wt-section-label">Key Items</div>
+              <ul class="wt-items-list">
+                <li>No major story items — minor hidden items in grass patches</li>
+              </ul>
+            </div>
+            <div>
+              <div class="wt-section-label">Wild Pokemon</div>
+              <ul class="wt-pokemon-list">
+                <li><span class="wt-pokemon-name">Tentacool</span><span class="rarity rarity-common">Common</span></li>
+                <li><span class="wt-pokemon-name">Tentacruel</span><span class="rarity rarity-rare">Rare</span></li>
+                <li><span class="wt-pokemon-name">Tangela</span><span class="rarity rarity-rare">Rare</span></li>
+              </ul>
+            </div>
+            <div class="wt-tips-col">
+              <div class="wt-section-label">Trainer Tips</div>
+              <ul class="wt-tips-list">
+                <li>Tangela has surprisingly good Defense and learns Bind, Mega Drain, and Sleep Powder — viable Grass-type if you skipped Oddish.</li>
+                <li>Fly north to Pallet Town and visit Oak after getting all 7 badges to advance the Saffron City storyline.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 25 Saffron City / Silph Co. -->
+        <div class="wt-card">
+          <div class="wt-card-header">
+            <span class="wt-card-num">25</span>
+            <h3 class="wt-card-title">Saffron City / Silph Co. &mdash; Gym Leader: Sabrina</h3>
+          </div>
+          <div class="wt-card-body">
+            <p class="wt-desc">Saffron is locked by Team Rocket until you fight through the 11-floor Silph Co. headquarters and defeat Giovanni on the top floor. After liberating the building you receive a free Lapras. Then challenge Sabrina's Psychic gym — her Alakazam is extremely fast and hits hard.</p>
+            <div>
+              <div class="wt-section-label">Key Items</div>
+              <ul class="wt-items-list">
+                <li>Marsh Badge (from Sabrina)</li>
+                <li>TM04 Calm Mind (from Sabrina)</li>
+                <li>Lapras (free from employee after clearing Silph Co.)</li>
+                <li>Master Ball (from Silph Co. president after beating Giovanni)</li>
+                <li>TM26 Earthquake (from Giovanni in Silph Co.)</li>
+              </ul>
+            </div>
+            <div>
+              <div class="wt-section-label">Sabrina's Team</div>
+              <ul class="wt-pokemon-list">
+                <li><span class="wt-pokemon-name">Kadabra Lv 38</span><span class="rarity rarity-common">Psychic</span></li>
+                <li><span class="wt-pokemon-name">Mr. Mime Lv 37</span><span class="rarity rarity-common">Psychic</span></li>
+                <li><span class="wt-pokemon-name">Venomoth Lv 38</span><span class="rarity rarity-rare">Bug/Psn</span></li>
+                <li><span class="wt-pokemon-name">Alakazam Lv 43</span><span class="rarity rarity-vr">Psychic</span></li>
+              </ul>
+            </div>
+            <div class="wt-tips-col">
+              <div class="wt-section-label">Trainer Tips</div>
+              <ul class="wt-tips-list">
+                <li>Save the Master Ball for the roaming legendary (Raikou/Entei/Suicune in post-game) or an emergency. Do not waste it on a static encounter.</li>
+                <li>Dark and Ghost types are immune or resistant to Psychic. Haunter/Gengar destroy this gym.</li>
+                <li>Silph Co. has teleport pads that crisscross floors — the Card Key (found on 5F) is needed to open locked doors throughout the building.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 26 Routes 22 & 23 -->
+        <div class="wt-card">
+          <div class="wt-card-header">
+            <span class="wt-card-num">26</span>
+            <h3 class="wt-card-title">Routes 22 &amp; 23</h3>
+          </div>
+          <div class="wt-card-body">
+            <p class="wt-desc">Route 22 begins just west of Viridian City — your rival intercepts you here early in the game. Route 23 is the final stretch to Victory Road, lined with badge-check gates. All 8 Kanto badges are required to pass through. Good last-chance training spot.</p>
+            <div>
+              <div class="wt-section-label">Key Items</div>
+              <ul class="wt-items-list">
+                <li>All 8 Gym Badges required to pass Route 23's gates</li>
+                <li>Max Potion, PP Up (hidden in Route 23 grass)</li>
+              </ul>
+            </div>
+            <div>
+              <div class="wt-section-label">Wild Pokemon</div>
+              <ul class="wt-pokemon-list">
+                <li><span class="wt-pokemon-name">Mankey</span><span class="rarity rarity-common">Common (Rt 22)</span></li>
+                <li><span class="wt-pokemon-name">Nidoran♀/♂</span><span class="rarity rarity-common">Common (Rt 22)</span></li>
+                <li><span class="wt-pokemon-name">Fearow</span><span class="rarity rarity-common">Common (Rt 23)</span></li>
+                <li><span class="wt-pokemon-name">Ekans</span><span class="rarity rarity-rare">Rare (Rt 23)</span></li>
+              </ul>
+            </div>
+            <div class="wt-tips-col">
+              <div class="wt-section-label">Trainer Tips</div>
+              <ul class="wt-tips-list">
+                <li>Your rival battle on Route 22 (early game) uses your starter's weakness — come back here later to battle him again for lore and experience.</li>
+                <li>Aim for level 45–48 across your full team before entering Victory Road. The Elite Four will punish underprepared teams.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 27 Victory Road -->
+        <div class="wt-card">
+          <div class="wt-card-header">
+            <span class="wt-card-num">27</span>
+            <h3 class="wt-card-title">Victory Road</h3>
+          </div>
+          <div class="wt-card-body">
+            <p class="wt-desc">A three-floor cave dungeon that serves as the final test before the Elite Four. Strength is required to push boulders onto switches and open the path. Moltres (Lv 50) waits near the end — the only chance to catch it in the wild.</p>
+            <div>
+              <div class="wt-section-label">Key Items</div>
+              <ul class="wt-items-list">
+                <li>Moltres (legendary, Lv 50 — one encounter only)</li>
+                <li>TM43 Secret Power (hidden)</li>
+                <li>Full Restore, Max Revive (hidden)</li>
+              </ul>
+            </div>
+            <div>
+              <div class="wt-section-label">Wild Pokemon</div>
+              <ul class="wt-pokemon-list">
+                <li><span class="wt-pokemon-name">Zubat / Golbat</span><span class="rarity rarity-common">Common</span></li>
+                <li><span class="wt-pokemon-name">Geodude / Graveler</span><span class="rarity rarity-common">Common</span></li>
+                <li><span class="wt-pokemon-name">Machoke</span><span class="rarity rarity-rare">Rare</span></li>
+                <li><span class="wt-pokemon-name">Onix</span><span class="rarity rarity-rare">Rare</span></li>
+              </ul>
+            </div>
+            <div class="wt-tips-col">
+              <div class="wt-section-label">Trainer Tips</div>
+              <ul class="wt-tips-list">
+                <li>Save before approaching Moltres. Bring Ultra Balls and weaken it carefully — it's a Fire/Flying legendary and a great team member.</li>
+                <li>Repel through Victory Road unless you're still grinding. The dungeon is long and trainer-dense.</li>
+                <li>Stock Full Restores and Max Revives before entering the Plateau. You cannot return to heal between Elite Four battles.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 28 Indigo Plateau / Elite Four -->
+        <div class="wt-card">
+          <div class="wt-card-header">
+            <span class="wt-card-num">28</span>
+            <h3 class="wt-card-title">Indigo Plateau &mdash; Elite Four &amp; Champion</h3>
+          </div>
+          <div class="wt-card-body">
+            <p class="wt-desc">The final challenge. The Elite Four must be faced in strict order with no healing between rooms — stock Full Restores, Max Revives, and Elixirs before entering. After defeating all four, your rival awaits as the Champion.</p>
+            <div>
+              <div class="wt-section-label">Elite Four Order</div>
+              <ul class="wt-items-list">
+                <li>Lorelei (Ice) — Fire, Fighting, Rock, Steel counter her</li>
+                <li>Bruno (Fighting) — Psychic, Flying, Fairy counter him</li>
+                <li>Agatha (Ghost/Poison) — Dark, Ghost, Ground counter her</li>
+                <li>Lance (Dragon) — Ice is 4x effective; Dragon and Fairy work too</li>
+                <li>Rival (Champion) — mixed team; type coverage is key</li>
+              </ul>
+            </div>
+            <div>
+              <div class="wt-section-label">Recommended Levels</div>
+              <ul class="wt-pokemon-list">
+                <li><span class="wt-pokemon-name">Minimum viable</span><span class="rarity rarity-common">Lv 48+</span></li>
+                <li><span class="wt-pokemon-name">Comfortable</span><span class="rarity rarity-rare">Lv 52+</span></li>
+                <li><span class="wt-pokemon-name">Overleveled</span><span class="rarity rarity-vr">Lv 58+</span></li>
+              </ul>
+            </div>
+            <div class="wt-tips-col">
+              <div class="wt-section-label">Trainer Tips</div>
+              <ul class="wt-tips-list">
+                <li>LeafGreen exclusives shine here: Starmie (Water/Psychic) handles Lorelei, Bruno, and Agatha; Slowbro soaks hits while dishing Psychic damage; Pinsir's X-Scissor tears through Lance's Dragon types.</li>
+                <li>Lance's Dragonite trio all know Hyper Beam — switch in a resistant Pokemon after each Hyper Beam (it forces a recharge turn) to attack safely.</li>
+                <li>Agatha uses Confuse Ray and Destiny Bond constantly — lead with your strongest attacker and try to one-shot her Pokemon before status piles up.</li>
+                <li>Your rival's team is based on your starter. Expect a full 6-Pokemon team in the mid-to-high 50s. This is the hardest fight in the game.</li>
+                <li>You can re-challenge the Elite Four after beating the game — best source of late-game EXP for completing your Pokedex.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
     <!-- ── Gym Leaders panel ── -->
     <section class="tab-panel" id="panel-gymleaders" role="tabpanel" aria-labelledby="tab-gymleaders">
-      <div class="placeholder">
-        <div class="placeholder-icon" style="color: var(--red);">🏆</div>
-        <h2 class="placeholder-title">Gym Leaders</h2>
-        <p class="placeholder-desc">All 8 Kanto gym leaders, their teams, and recommended counters.</p>
-        <div class="badge-grid">
-          <div class="badge-slot" title="Boulder Badge">🪨</div>
-          <div class="badge-slot" title="Cascade Badge">💧</div>
-          <div class="badge-slot" title="Thunder Badge">⚡</div>
-          <div class="badge-slot" title="Rainbow Badge">🌈</div>
-          <div class="badge-slot" title="Soul Badge">👻</div>
-          <div class="badge-slot" title="Marsh Badge">🌿</div>
-          <div class="badge-slot" title="Volcano Badge">🔥</div>
-          <div class="badge-slot" title="Earth Badge">🌍</div>
+      <div class="gym-leaders">
+
+        <!-- 1 Brock -->
+        <div class="gl-card">
+          <div class="gl-card-header">
+            <span class="gl-num">01</span>
+            <div class="gl-title-block">
+              <span class="gl-name">Brock</span>
+              <span class="gl-meta">Pewter City &bull; Boulder Badge</span>
+            </div>
+            <span class="gl-badge-pill type-rock">Rock</span>
+          </div>
+          <div class="gl-body">
+            <p class="gl-desc">The stoic first gym leader. A rock-solid trainer who doubles as a caretaker for his many younger siblings. Unmoved by flashy tactics — he relies on pure defensive bulk.</p>
+            <div>
+              <div class="gl-section-label">Team</div>
+              <ul class="gl-team-list">
+                <li>
+                  <span class="gl-pokemon-name">Geodude &nbsp;Lv. 12</span>
+                  <span class="gl-moves">Tackle, Defense Curl</span>
+                </li>
+                <li>
+                  <span class="gl-pokemon-name">Onix &nbsp;Lv. 14</span>
+                  <span class="gl-moves">Tackle, Bind, Screech</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <div class="gl-section-label">Weak To</div>
+              <div class="gl-tags-row">
+                <span class="gl-tag weak">Water</span>
+                <span class="gl-tag weak">Grass</span>
+                <span class="gl-tag weak">Fighting</span>
+              </div>
+              <div class="gl-section-label" style="margin-top:12px;">Counters</div>
+              <ul class="gl-counters-list">
+                <li>Squirtle — Bubble is 4x effective on Onix</li>
+                <li>Bulbasaur — Vine Whip handles both Pokemon</li>
+                <li>Mankey (Route 22) — Low Kick, Fighting coverage</li>
+              </ul>
+            </div>
+            <div class="gl-rewards-row">
+              <div class="gl-reward-box">
+                <div class="gl-section-label">HM Unlocked</div>
+                <span class="gl-reward-val">HM05 Flash</span>
+              </div>
+              <div class="gl-reward-box">
+                <div class="gl-section-label">TM Reward</div>
+                <span class="gl-reward-val">TM39 Rock Tomb</span>
+              </div>
+            </div>
+            <div class="gl-tip-col">
+              <div class="gl-tip-box">No Water or Grass Pokemon are available before Brock. If you picked Charmander, detour to Route 22 before Viridian Forest and catch a Mankey — Low Kick is your best option against his team.</div>
+            </div>
+          </div>
         </div>
-        <div class="placeholder-tag">Coming Soon</div>
+
+        <!-- 2 Misty -->
+        <div class="gl-card">
+          <div class="gl-card-header">
+            <span class="gl-num">02</span>
+            <div class="gl-title-block">
+              <span class="gl-name">Misty</span>
+              <span class="gl-meta">Cerulean City &bull; Cascade Badge</span>
+            </div>
+            <span class="gl-badge-pill type-water">Water</span>
+          </div>
+          <div class="gl-body">
+            <p class="gl-desc">A tomboyish mermaid who prides herself on powerful Water-type attacks. Deceptively aggressive for the second gym — Starmie's Recover can make a long fight even longer.</p>
+            <div>
+              <div class="gl-section-label">Team</div>
+              <ul class="gl-team-list">
+                <li>
+                  <span class="gl-pokemon-name">Staryu &nbsp;Lv. 18</span>
+                  <span class="gl-moves">Water Gun, Rapid Spin, Harden</span>
+                </li>
+                <li>
+                  <span class="gl-pokemon-name">Starmie &nbsp;Lv. 21</span>
+                  <span class="gl-moves">Water Gun, Rapid Spin, Recover, BubbleBeam</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <div class="gl-section-label">Weak To</div>
+              <div class="gl-tags-row">
+                <span class="gl-tag weak">Electric</span>
+                <span class="gl-tag weak">Grass</span>
+              </div>
+              <div class="gl-section-label" style="margin-top:12px;">Counters</div>
+              <ul class="gl-counters-list">
+                <li>Pikachu (Viridian Forest) — Thundershock, immune to Water</li>
+                <li>Paras (Mt. Moon) — Stun Spore + Leech Life combo</li>
+                <li>Oddish (Routes 24&amp;25) — Absorb; LeafGreen exclusive</li>
+              </ul>
+            </div>
+            <div class="gl-rewards-row">
+              <div class="gl-reward-box">
+                <div class="gl-section-label">HM Unlocked</div>
+                <span class="gl-reward-val">HM01 Cut</span>
+              </div>
+              <div class="gl-reward-box">
+                <div class="gl-section-label">TM Reward</div>
+                <span class="gl-reward-val">TM03 Water Pulse</span>
+              </div>
+            </div>
+            <div class="gl-tip-col">
+              <div class="gl-tip-box">Starmie's Recover makes it dangerous — hit it hard and fast with Electric or Grass before it can heal. Don't let the fight drag on or it will slowly outlast you.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Lt. Surge -->
+        <div class="gl-card">
+          <div class="gl-card-header">
+            <span class="gl-num">03</span>
+            <div class="gl-title-block">
+              <span class="gl-name">Lt. Surge</span>
+              <span class="gl-meta">Vermilion City &bull; Thunder Badge</span>
+            </div>
+            <span class="gl-badge-pill type-electric">Electric</span>
+          </div>
+          <div class="gl-body">
+            <p class="gl-desc">The Lightning American — a military veteran who shocks opponents into submission with raw Electric power. His Raichu is faster and stronger than it looks.</p>
+            <div>
+              <div class="gl-section-label">Team</div>
+              <ul class="gl-team-list">
+                <li>
+                  <span class="gl-pokemon-name">Voltorb &nbsp;Lv. 21</span>
+                  <span class="gl-moves">SonicBoom, Screech</span>
+                </li>
+                <li>
+                  <span class="gl-pokemon-name">Pikachu &nbsp;Lv. 18</span>
+                  <span class="gl-moves">Thundershock, Quick Attack</span>
+                </li>
+                <li>
+                  <span class="gl-pokemon-name">Raichu &nbsp;Lv. 24</span>
+                  <span class="gl-moves">Thunderbolt, Mega Kick, Mega Punch, Growl</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <div class="gl-section-label">Weak To</div>
+              <div class="gl-tags-row">
+                <span class="gl-tag weak">Ground</span>
+              </div>
+              <div class="gl-section-label" style="margin-top:12px;">Counters</div>
+              <ul class="gl-counters-list">
+                <li>Diglett / Dugtrio (Diglett's Cave) — fully immune; Magnitude destroys the whole team</li>
+                <li>Geodude — Rock/Ground, immune to Electric</li>
+                <li>Sandshrew (LeafGreen exclusive) — Ground-type, immune to Electric</li>
+              </ul>
+            </div>
+            <div class="gl-rewards-row">
+              <div class="gl-reward-box">
+                <div class="gl-section-label">HM Unlocked</div>
+                <span class="gl-reward-val">HM02 Fly</span>
+              </div>
+              <div class="gl-reward-box">
+                <div class="gl-section-label">TM Reward</div>
+                <span class="gl-reward-val">TM34 Shock Wave</span>
+              </div>
+            </div>
+            <div class="gl-tip-col">
+              <div class="gl-tip-box">Diglett's Cave is directly east of Vermilion City — grab a Diglett before challenging Surge. It completely walls his entire team with Ground immunity and strong Magnitude damage.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 Erika -->
+        <div class="gl-card">
+          <div class="gl-card-header">
+            <span class="gl-num">04</span>
+            <div class="gl-title-block">
+              <span class="gl-name">Erika</span>
+              <span class="gl-meta">Celadon City &bull; Rainbow Badge</span>
+            </div>
+            <span class="gl-badge-pill type-grass">Grass</span>
+          </div>
+          <div class="gl-body">
+            <p class="gl-desc">A graceful and serene Gym Leader who specializes in Grass-type Pokemon with sleep-inducing moves. Don't let her calm demeanor fool you — Sleep Powder can end a run quickly.</p>
+            <div>
+              <div class="gl-section-label">Team</div>
+              <ul class="gl-team-list">
+                <li>
+                  <span class="gl-pokemon-name">Tangela &nbsp;Lv. 29</span>
+                  <span class="gl-moves">Constrict, Sleep Powder, Absorb</span>
+                </li>
+                <li>
+                  <span class="gl-pokemon-name">Weepinbell &nbsp;Lv. 24 <span style="color:var(--green);font-size:15px;">[LG]</span></span>
+                  <span class="gl-moves">Vine Whip, Sleep Powder, Wrap</span>
+                </li>
+                <li>
+                  <span class="gl-pokemon-name">Victreebel &nbsp;Lv. 29 <span style="color:var(--green);font-size:15px;">[LG]</span></span>
+                  <span class="gl-moves">Razor Leaf, Sleep Powder, Wrap</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <div class="gl-section-label">Weak To</div>
+              <div class="gl-tags-row">
+                <span class="gl-tag weak">Fire</span>
+                <span class="gl-tag weak">Flying</span>
+                <span class="gl-tag weak">Ice</span>
+                <span class="gl-tag weak">Poison</span>
+                <span class="gl-tag weak">Bug</span>
+              </div>
+              <div class="gl-section-label" style="margin-top:12px;">Counters</div>
+              <ul class="gl-counters-list">
+                <li>Charizard — Ember / Flamethrower wrecks the whole gym</li>
+                <li>Pidgeot — Fly hits all three for super effective damage</li>
+                <li>Vulpix / Ninetales (LeafGreen exclusive) — Fire moves, clean sweep</li>
+              </ul>
+            </div>
+            <div class="gl-rewards-row">
+              <div class="gl-reward-box">
+                <div class="gl-section-label">HM Unlocked</div>
+                <span class="gl-reward-val">HM04 Strength</span>
+              </div>
+              <div class="gl-reward-box">
+                <div class="gl-section-label">TM Reward</div>
+                <span class="gl-reward-val">TM19 Giga Drain</span>
+              </div>
+            </div>
+            <div class="gl-tip-col">
+              <div class="gl-tip-box">Every Pokemon on Erika's team knows Sleep Powder — bring Awakenings. Flying moves hit her entire team for super effective damage and bypass Wrap/Constrict stall tactics.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5 Koga -->
+        <div class="gl-card">
+          <div class="gl-card-header">
+            <span class="gl-num">05</span>
+            <div class="gl-title-block">
+              <span class="gl-name">Koga</span>
+              <span class="gl-meta">Fuchsia City &bull; Soul Badge</span>
+            </div>
+            <span class="gl-badge-pill type-poison">Poison</span>
+          </div>
+          <div class="gl-body">
+            <p class="gl-desc">A ninja master who relies on status conditions, poison, and stalling tactics to wear opponents down. He will Toxic you, Smokescreen you, and Selfdestruct when cornered — plan ahead.</p>
+            <div>
+              <div class="gl-section-label">Team</div>
+              <ul class="gl-team-list">
+                <li>
+                  <span class="gl-pokemon-name">Koffing &nbsp;Lv. 37</span>
+                  <span class="gl-moves">Smog, Smokescreen, Selfdestruct</span>
+                </li>
+                <li>
+                  <span class="gl-pokemon-name">Koffing &nbsp;Lv. 37</span>
+                  <span class="gl-moves">Smog, Smokescreen, Selfdestruct</span>
+                </li>
+                <li>
+                  <span class="gl-pokemon-name">Muk &nbsp;Lv. 39</span>
+                  <span class="gl-moves">Minimize, Smokescreen, Pound, Disable</span>
+                </li>
+                <li>
+                  <span class="gl-pokemon-name">Weezing &nbsp;Lv. 43</span>
+                  <span class="gl-moves">Smog, Smokescreen, Selfdestruct, Toxic</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <div class="gl-section-label">Weak To</div>
+              <div class="gl-tags-row">
+                <span class="gl-tag weak">Psychic</span>
+                <span class="gl-tag weak">Ground</span>
+              </div>
+              <div class="gl-section-label" style="margin-top:12px;">Counters</div>
+              <ul class="gl-counters-list">
+                <li>Kadabra / Alakazam — Psychic one-shots most of his team</li>
+                <li>Hypno — Psychic + enough bulk to survive status stacking</li>
+                <li>Starmie (LeafGreen exclusive) — Psychic + Water, handles everything</li>
+              </ul>
+            </div>
+            <div class="gl-rewards-row">
+              <div class="gl-reward-box">
+                <div class="gl-section-label">HM Unlocked</div>
+                <span class="gl-reward-val">HM03 Surf</span>
+              </div>
+              <div class="gl-reward-box">
+                <div class="gl-section-label">TM Reward</div>
+                <span class="gl-reward-val">TM06 Toxic</span>
+              </div>
+            </div>
+            <div class="gl-tip-col">
+              <div class="gl-tip-box">Bring lots of Antidotes and Full Heals — Koga will poison and status your entire team if given the chance. Lead with a strong Psychic-type and try to end each Pokemon in one or two hits before status piles up.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6 Sabrina -->
+        <div class="gl-card">
+          <div class="gl-card-header">
+            <span class="gl-num">06</span>
+            <div class="gl-title-block">
+              <span class="gl-name">Sabrina</span>
+              <span class="gl-meta">Saffron City &bull; Marsh Badge</span>
+            </div>
+            <span class="gl-badge-pill type-psychic">Psychic</span>
+          </div>
+          <div class="gl-body">
+            <p class="gl-desc">The mistress of psychic power — a cold, calculating trainer with terrifying Special Attack. Her Alakazam is among the fastest Pokemon in the game and hits as hard as it looks.</p>
+            <div>
+              <div class="gl-section-label">Team</div>
+              <ul class="gl-team-list">
+                <li>
+                  <span class="gl-pokemon-name">Mr. Mime &nbsp;Lv. 37</span>
+                  <span class="gl-moves">Psybeam, Barrier, Confusion, Meditate</span>
+                </li>
+                <li>
+                  <span class="gl-pokemon-name">Venomoth &nbsp;Lv. 38</span>
+                  <span class="gl-moves">Psybeam, Sleep Powder, Disable</span>
+                </li>
+                <li>
+                  <span class="gl-pokemon-name">Kadabra &nbsp;Lv. 38</span>
+                  <span class="gl-moves">Psybeam, Recover, Reflect, Kinesis</span>
+                </li>
+                <li>
+                  <span class="gl-pokemon-name">Alakazam &nbsp;Lv. 43</span>
+                  <span class="gl-moves">Psybeam, Recover, Reflect, Psychic</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <div class="gl-section-label">Weak To</div>
+              <div class="gl-tags-row">
+                <span class="gl-tag weak">Ghost</span>
+                <span class="gl-tag weak">Bug</span>
+                <span class="gl-tag weak">Dark</span>
+              </div>
+              <div class="gl-section-label" style="margin-top:12px;">Counters</div>
+              <ul class="gl-counters-list">
+                <li>Haunter / Gengar — Ghost is immune to her Normal and Fighting moves</li>
+                <li>Scyther (LeafGreen exclusive) — Bug moves, strong physical Attack</li>
+              </ul>
+            </div>
+            <div class="gl-rewards-row">
+              <div class="gl-reward-box">
+                <div class="gl-section-label">HM Unlocked</div>
+                <span class="gl-reward-val">HM06 Rock Smash</span>
+              </div>
+              <div class="gl-reward-box">
+                <div class="gl-section-label">TM Reward</div>
+                <span class="gl-reward-val">TM04 Calm Mind</span>
+              </div>
+            </div>
+            <div class="gl-tip-col">
+              <div class="gl-tip-box">Gastly and Haunter are available in Pokemon Tower in Lavender Town — catch one before tackling Saffron City. Ghost types are immune to her Normal and Fighting moves and resist Psychic in Gen I mechanics.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7 Blaine -->
+        <div class="gl-card">
+          <div class="gl-card-header">
+            <span class="gl-num">07</span>
+            <div class="gl-title-block">
+              <span class="gl-name">Blaine</span>
+              <span class="gl-meta">Cinnabar Island &bull; Volcano Badge</span>
+            </div>
+            <span class="gl-badge-pill type-fire">Fire</span>
+          </div>
+          <div class="gl-body">
+            <p class="gl-desc">A fiery old man who quizzes challengers before they can reach him — answer wrong and face extra trainers before the battle. His Arcanine at level 47 is the most powerful Gym Leader Pokemon in Kanto.</p>
+            <div>
+              <div class="gl-section-label">Team</div>
+              <ul class="gl-team-list">
+                <li>
+                  <span class="gl-pokemon-name">Ponyta &nbsp;Lv. 40</span>
+                  <span class="gl-moves">Ember, Stomp, Fire Spin</span>
+                </li>
+                <li>
+                  <span class="gl-pokemon-name">Growlithe &nbsp;Lv. 42</span>
+                  <span class="gl-moves">Ember, Leer, Roar, Fire Spin</span>
+                </li>
+                <li>
+                  <span class="gl-pokemon-name">Rapidash &nbsp;Lv. 42</span>
+                  <span class="gl-moves">Ember, Stomp, Fire Spin, Agility</span>
+                </li>
+                <li>
+                  <span class="gl-pokemon-name">Arcanine &nbsp;Lv. 47</span>
+                  <span class="gl-moves">Ember, Leer, Roar, Fire Spin, Take Down</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <div class="gl-section-label">Weak To</div>
+              <div class="gl-tags-row">
+                <span class="gl-tag weak">Water</span>
+                <span class="gl-tag weak">Rock</span>
+                <span class="gl-tag weak">Ground</span>
+              </div>
+              <div class="gl-section-label" style="margin-top:12px;">Counters</div>
+              <ul class="gl-counters-list">
+                <li>Gyarados — Surf, strong bulk to take hits</li>
+                <li>Starmie (LeafGreen exclusive) — Surf + Psychic, fast enough to outspeed</li>
+                <li>Golduck — Surf, reliable Water coverage</li>
+              </ul>
+            </div>
+            <div class="gl-rewards-row">
+              <div class="gl-reward-box">
+                <div class="gl-section-label">HM Unlocked</div>
+                <span class="gl-reward-val">HM07 Waterfall</span>
+              </div>
+              <div class="gl-reward-box">
+                <div class="gl-section-label">TM Reward</div>
+                <span class="gl-reward-val">TM38 Fire Blast</span>
+              </div>
+            </div>
+            <div class="gl-tip-col">
+              <div class="gl-tip-box">Answer the quiz questions correctly to skip the extra trainers and go straight to Blaine. Bring plenty of Water moves — Arcanine at level 47 hits very hard and Fire Spin traps you for multiple turns.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8 Giovanni -->
+        <div class="gl-card">
+          <div class="gl-card-header">
+            <span class="gl-num">08</span>
+            <div class="gl-title-block">
+              <span class="gl-name">Giovanni</span>
+              <span class="gl-meta">Viridian City &bull; Earth Badge</span>
+            </div>
+            <span class="gl-badge-pill type-ground">Ground</span>
+          </div>
+          <div class="gl-body">
+            <p class="gl-desc">The boss of Team Rocket hiding in plain sight as the final Gym Leader. His Ground-type team is the toughest in all of Kanto — bulky, hard-hitting, and capped by a level 50 Rhydon.</p>
+            <div>
+              <div class="gl-section-label">Team</div>
+              <ul class="gl-team-list">
+                <li>
+                  <span class="gl-pokemon-name">Rhyhorn &nbsp;Lv. 45</span>
+                  <span class="gl-moves">Stomp, Tail Whip, Fury Attack, Horn Drill</span>
+                </li>
+                <li>
+                  <span class="gl-pokemon-name">Dugtrio &nbsp;Lv. 42</span>
+                  <span class="gl-moves">Slash, Growl, Dig, Sand Attack</span>
+                </li>
+                <li>
+                  <span class="gl-pokemon-name">Nidoqueen &nbsp;Lv. 44</span>
+                  <span class="gl-moves">Scratch, Tail Whip, Double Kick, Poison Sting</span>
+                </li>
+                <li>
+                  <span class="gl-pokemon-name">Nidoking &nbsp;Lv. 45</span>
+                  <span class="gl-moves">Peck, Focus Energy, Double Kick, Poison Sting</span>
+                </li>
+                <li>
+                  <span class="gl-pokemon-name">Rhydon &nbsp;Lv. 50</span>
+                  <span class="gl-moves">Stomp, Tail Whip, Fury Attack, Horn Drill</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <div class="gl-section-label">Weak To</div>
+              <div class="gl-tags-row">
+                <span class="gl-tag weak">Water</span>
+                <span class="gl-tag weak">Grass</span>
+                <span class="gl-tag weak">Ice</span>
+              </div>
+              <div class="gl-section-label" style="margin-top:12px;">Counters</div>
+              <ul class="gl-counters-list">
+                <li>Starmie (LeafGreen exclusive) — Surf handles the whole team</li>
+                <li>Gyarados — Surf, immune to Ground, high Attack</li>
+                <li>Venusaur — Razor Leaf, Grass coverage across the board</li>
+              </ul>
+            </div>
+            <div class="gl-rewards-row">
+              <div class="gl-reward-box">
+                <div class="gl-section-label">HM Unlocked</div>
+                <span class="gl-reward-val">None (all obtained)</span>
+              </div>
+              <div class="gl-reward-box">
+                <div class="gl-section-label">TM Reward</div>
+                <span class="gl-reward-val">TM26 Earthquake</span>
+              </div>
+            </div>
+            <div class="gl-tip-col">
+              <div class="gl-tip-box">Rhydon at level 50 is the real threat — Horn Drill is a one-hit KO move. Make sure your team is level 45–50 before entering. Surf will deal super effective damage to every single Pokemon on his roster.</div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
     <!-- ── Team Builder panel ── -->
     <section class="tab-panel" id="panel-teambuilder" role="tabpanel" aria-labelledby="tab-teambuilder">
-      <div class="placeholder">
-        <div class="placeholder-icon" style="color: var(--green);">⚔️</div>
-        <h2 class="placeholder-title">Team Builder</h2>
-        <p class="placeholder-desc">Plan your party of 6. Check type coverage and version exclusives.</p>
-        <div class="party-grid">
-          <div class="party-slot"><div class="slot-icon">🎮</div>Slot 1</div>
-          <div class="party-slot"><div class="slot-icon">🎮</div>Slot 2</div>
-          <div class="party-slot"><div class="slot-icon">🎮</div>Slot 3</div>
-          <div class="party-slot"><div class="slot-icon">🎮</div>Slot 4</div>
-          <div class="party-slot"><div class="slot-icon">🎮</div>Slot 5</div>
-          <div class="party-slot"><div class="slot-icon">🎮</div>Slot 6</div>
+      <div class="tb-wrap">
+
+        <!-- Header -->
+        <div class="tb-panel-header">
+          <h2>Party Manager</h2>
+          <p>Build &amp; save up to 3 team configurations &bull; Data persists in your browser</p>
         </div>
-        <div class="placeholder-tag">Coming Soon</div>
-      </div>
+
+        <!-- Config bar -->
+        <div class="tb-config-bar">
+          <div class="tb-team-tabs">
+            <button class="tb-team-btn active" id="team-btn-0" onclick="tbSelectTeam(0)">Team 1</button>
+            <button class="tb-team-btn"        id="team-btn-1" onclick="tbSelectTeam(1)">Team 2</button>
+            <button class="tb-team-btn"        id="team-btn-2" onclick="tbSelectTeam(2)">Team 3</button>
+          </div>
+          <div class="tb-config-right">
+            <input class="tb-rename-input" id="tb-team-name" type="text" placeholder="Team name..." maxlength="24">
+            <button class="tb-save-btn" onclick="tbSaveTeam()">Save Team</button>
+            <span class="tb-save-flash" id="tb-save-flash">SAVED!</span>
+          </div>
+        </div>
+
+        <!-- 2x3 slot grid -->
+        <div class="tb-slots-grid">
+
+          <!-- Slot 1 -->
+          <div class="tb-slot">
+            <div class="tb-slot-header">
+              <span class="tb-slot-num">&#9654; SLOT 1</span>
+              <input class="tb-name-input" id="name-0" type="text" placeholder="Pokemon Name" maxlength="20">
+            </div>
+            <div class="tb-slot-body">
+              <div class="tb-types-row">
+                <div><div class="tb-label">Type 1</div><select class="tb-select" id="type1-0" onchange="tbOnChange()"></select></div>
+                <div><div class="tb-label">Type 2</div><select class="tb-select" id="type2-0" onchange="tbOnChange()"></select></div>
+              </div>
+              <div class="tb-moves-grid">
+                <div><div class="tb-label">Move 1</div><input class="tb-input" id="move1-0" type="text" placeholder="Move 1" maxlength="30"></div>
+                <div><div class="tb-label">Move 2</div><input class="tb-input" id="move2-0" type="text" placeholder="Move 2" maxlength="30"></div>
+                <div><div class="tb-label">Move 3</div><input class="tb-input" id="move3-0" type="text" placeholder="Move 3" maxlength="30"></div>
+                <div><div class="tb-label">Move 4</div><input class="tb-input" id="move4-0" type="text" placeholder="Move 4" maxlength="30"></div>
+              </div>
+              <div><div class="tb-label">Notes</div><input class="tb-input" id="notes-0" type="text" placeholder="Held item, strategy..." maxlength="60"></div>
+            </div>
+          </div>
+
+          <!-- Slot 2 -->
+          <div class="tb-slot">
+            <div class="tb-slot-header">
+              <span class="tb-slot-num">&#9654; SLOT 2</span>
+              <input class="tb-name-input" id="name-1" type="text" placeholder="Pokemon Name" maxlength="20">
+            </div>
+            <div class="tb-slot-body">
+              <div class="tb-types-row">
+                <div><div class="tb-label">Type 1</div><select class="tb-select" id="type1-1" onchange="tbOnChange()"></select></div>
+                <div><div class="tb-label">Type 2</div><select class="tb-select" id="type2-1" onchange="tbOnChange()"></select></div>
+              </div>
+              <div class="tb-moves-grid">
+                <div><div class="tb-label">Move 1</div><input class="tb-input" id="move1-1" type="text" placeholder="Move 1" maxlength="30"></div>
+                <div><div class="tb-label">Move 2</div><input class="tb-input" id="move2-1" type="text" placeholder="Move 2" maxlength="30"></div>
+                <div><div class="tb-label">Move 3</div><input class="tb-input" id="move3-1" type="text" placeholder="Move 3" maxlength="30"></div>
+                <div><div class="tb-label">Move 4</div><input class="tb-input" id="move4-1" type="text" placeholder="Move 4" maxlength="30"></div>
+              </div>
+              <div><div class="tb-label">Notes</div><input class="tb-input" id="notes-1" type="text" placeholder="Held item, strategy..." maxlength="60"></div>
+            </div>
+          </div>
+
+          <!-- Slot 3 -->
+          <div class="tb-slot">
+            <div class="tb-slot-header">
+              <span class="tb-slot-num">&#9654; SLOT 3</span>
+              <input class="tb-name-input" id="name-2" type="text" placeholder="Pokemon Name" maxlength="20">
+            </div>
+            <div class="tb-slot-body">
+              <div class="tb-types-row">
+                <div><div class="tb-label">Type 1</div><select class="tb-select" id="type1-2" onchange="tbOnChange()"></select></div>
+                <div><div class="tb-label">Type 2</div><select class="tb-select" id="type2-2" onchange="tbOnChange()"></select></div>
+              </div>
+              <div class="tb-moves-grid">
+                <div><div class="tb-label">Move 1</div><input class="tb-input" id="move1-2" type="text" placeholder="Move 1" maxlength="30"></div>
+                <div><div class="tb-label">Move 2</div><input class="tb-input" id="move2-2" type="text" placeholder="Move 2" maxlength="30"></div>
+                <div><div class="tb-label">Move 3</div><input class="tb-input" id="move3-2" type="text" placeholder="Move 3" maxlength="30"></div>
+                <div><div class="tb-label">Move 4</div><input class="tb-input" id="move4-2" type="text" placeholder="Move 4" maxlength="30"></div>
+              </div>
+              <div><div class="tb-label">Notes</div><input class="tb-input" id="notes-2" type="text" placeholder="Held item, strategy..." maxlength="60"></div>
+            </div>
+          </div>
+
+          <!-- Slot 4 -->
+          <div class="tb-slot">
+            <div class="tb-slot-header">
+              <span class="tb-slot-num">&#9654; SLOT 4</span>
+              <input class="tb-name-input" id="name-3" type="text" placeholder="Pokemon Name" maxlength="20">
+            </div>
+            <div class="tb-slot-body">
+              <div class="tb-types-row">
+                <div><div class="tb-label">Type 1</div><select class="tb-select" id="type1-3" onchange="tbOnChange()"></select></div>
+                <div><div class="tb-label">Type 2</div><select class="tb-select" id="type2-3" onchange="tbOnChange()"></select></div>
+              </div>
+              <div class="tb-moves-grid">
+                <div><div class="tb-label">Move 1</div><input class="tb-input" id="move1-3" type="text" placeholder="Move 1" maxlength="30"></div>
+                <div><div class="tb-label">Move 2</div><input class="tb-input" id="move2-3" type="text" placeholder="Move 2" maxlength="30"></div>
+                <div><div class="tb-label">Move 3</div><input class="tb-input" id="move3-3" type="text" placeholder="Move 3" maxlength="30"></div>
+                <div><div class="tb-label">Move 4</div><input class="tb-input" id="move4-3" type="text" placeholder="Move 4" maxlength="30"></div>
+              </div>
+              <div><div class="tb-label">Notes</div><input class="tb-input" id="notes-3" type="text" placeholder="Held item, strategy..." maxlength="60"></div>
+            </div>
+          </div>
+
+          <!-- Slot 5 -->
+          <div class="tb-slot">
+            <div class="tb-slot-header">
+              <span class="tb-slot-num">&#9654; SLOT 5</span>
+              <input class="tb-name-input" id="name-4" type="text" placeholder="Pokemon Name" maxlength="20">
+            </div>
+            <div class="tb-slot-body">
+              <div class="tb-types-row">
+                <div><div class="tb-label">Type 1</div><select class="tb-select" id="type1-4" onchange="tbOnChange()"></select></div>
+                <div><div class="tb-label">Type 2</div><select class="tb-select" id="type2-4" onchange="tbOnChange()"></select></div>
+              </div>
+              <div class="tb-moves-grid">
+                <div><div class="tb-label">Move 1</div><input class="tb-input" id="move1-4" type="text" placeholder="Move 1" maxlength="30"></div>
+                <div><div class="tb-label">Move 2</div><input class="tb-input" id="move2-4" type="text" placeholder="Move 2" maxlength="30"></div>
+                <div><div class="tb-label">Move 3</div><input class="tb-input" id="move3-4" type="text" placeholder="Move 3" maxlength="30"></div>
+                <div><div class="tb-label">Move 4</div><input class="tb-input" id="move4-4" type="text" placeholder="Move 4" maxlength="30"></div>
+              </div>
+              <div><div class="tb-label">Notes</div><input class="tb-input" id="notes-4" type="text" placeholder="Held item, strategy..." maxlength="60"></div>
+            </div>
+          </div>
+
+          <!-- Slot 6 -->
+          <div class="tb-slot">
+            <div class="tb-slot-header">
+              <span class="tb-slot-num">&#9654; SLOT 6</span>
+              <input class="tb-name-input" id="name-5" type="text" placeholder="Pokemon Name" maxlength="20">
+            </div>
+            <div class="tb-slot-body">
+              <div class="tb-types-row">
+                <div><div class="tb-label">Type 1</div><select class="tb-select" id="type1-5" onchange="tbOnChange()"></select></div>
+                <div><div class="tb-label">Type 2</div><select class="tb-select" id="type2-5" onchange="tbOnChange()"></select></div>
+              </div>
+              <div class="tb-moves-grid">
+                <div><div class="tb-label">Move 1</div><input class="tb-input" id="move1-5" type="text" placeholder="Move 1" maxlength="30"></div>
+                <div><div class="tb-label">Move 2</div><input class="tb-input" id="move2-5" type="text" placeholder="Move 2" maxlength="30"></div>
+                <div><div class="tb-label">Move 3</div><input class="tb-input" id="move3-5" type="text" placeholder="Move 3" maxlength="30"></div>
+                <div><div class="tb-label">Move 4</div><input class="tb-input" id="move4-5" type="text" placeholder="Move 4" maxlength="30"></div>
+              </div>
+              <div><div class="tb-label">Notes</div><input class="tb-input" id="notes-5" type="text" placeholder="Held item, strategy..." maxlength="60"></div>
+            </div>
+          </div>
+
+        </div><!-- /tb-slots-grid -->
+
+        <!-- Type Coverage -->
+        <div class="tb-panel-box">
+          <div class="tb-panel-title">&#9650; Type Coverage</div>
+          <div class="tb-cov-section">
+            <div class="tb-cov-label">&#9658; Offensive &mdash; types your team hits super effectively</div>
+            <div class="tb-cov-row" id="tb-off-row"></div>
+          </div>
+          <div class="tb-cov-section">
+            <div class="tb-cov-label">&#9658; Defensive &mdash; types super effective against your team &nbsp;(brighter red = multiple members weak)</div>
+            <div class="tb-cov-row" id="tb-def-row"></div>
+          </div>
+        </div>
+
+        <!-- LeafGreen Exclusives -->
+        <div class="tb-panel-box">
+          <div class="tb-panel-title">&#9654; LeafGreen Version Exclusives</div>
+          <div class="tb-excl-grid">
+            <div class="tb-excl-item">Sandshrew / Sandslash</div>
+            <div class="tb-excl-item">Vulpix / Ninetales</div>
+            <div class="tb-excl-item">Bellsprout / Weepinbell / Victreebel</div>
+            <div class="tb-excl-item">Slowpoke / Slowbro</div>
+            <div class="tb-excl-item">Staryu / Starmie</div>
+            <div class="tb-excl-item">Magby / Magmar</div>
+            <div class="tb-excl-item">Pinsir</div>
+            <div class="tb-excl-item">Marill / Azumarill</div>
+            <div class="tb-excl-item">Misdreavus</div>
+            <div class="tb-excl-item">Sneasel</div>
+            <div class="tb-excl-item">Remoraid / Octillery</div>
+            <div class="tb-excl-item">Mantine</div>
+          </div>
+        </div>
+
+      </div><!-- /tb-wrap -->
     </section>
 
     <!-- ── Footer ── -->
@@ -506,6 +2512,190 @@
       if (btn)   { btn.classList.add('active');   btn.setAttribute('aria-selected', 'true'); }
       if (panel) { panel.classList.add('active'); }
     }
+  </script>
+
+
+  <script>
+  (function () {
+    /* ── Constants ── */
+    const TYPES = ['Normal','Fire','Water','Electric','Grass','Ice','Fighting','Poison','Ground','Flying','Psychic','Bug','Rock','Ghost','Dragon'];
+
+    /* Gen 1 attack type → effectiveness vs defending type (only non-1x entries) */
+    const EFF = {
+      'Normal':   {'Rock':0.5,'Ghost':0},
+      'Fire':     {'Grass':2,'Ice':2,'Bug':2,'Fire':0.5,'Water':0.5,'Rock':0.5,'Dragon':0.5},
+      'Water':    {'Fire':2,'Ground':2,'Rock':2,'Water':0.5,'Grass':0.5,'Dragon':0.5},
+      'Electric': {'Water':2,'Flying':2,'Electric':0.5,'Grass':0.5,'Ground':0,'Dragon':0.5},
+      'Grass':    {'Water':2,'Ground':2,'Rock':2,'Fire':0.5,'Grass':0.5,'Poison':0.5,'Flying':0.5,'Bug':0.5,'Dragon':0.5},
+      'Ice':      {'Grass':2,'Ground':2,'Flying':2,'Dragon':2,'Water':0.5,'Ice':0.5},
+      'Fighting': {'Normal':2,'Ice':2,'Rock':2,'Poison':0.5,'Flying':0.5,'Psychic':0.5,'Bug':0.5,'Ghost':0},
+      'Poison':   {'Grass':2,'Bug':2,'Poison':0.5,'Ground':0.5,'Rock':0.5,'Ghost':0.5},
+      'Ground':   {'Fire':2,'Electric':2,'Poison':2,'Rock':2,'Grass':0.5,'Bug':0.5,'Flying':0},
+      'Flying':   {'Grass':2,'Fighting':2,'Bug':2,'Electric':0.5,'Rock':0.5},
+      'Psychic':  {'Fighting':2,'Poison':2,'Psychic':0.5},
+      'Bug':      {'Grass':2,'Poison':2,'Psychic':2,'Fire':0.5,'Fighting':0.5,'Flying':0.5,'Ghost':0.5},
+      'Rock':     {'Fire':2,'Ice':2,'Flying':2,'Bug':2,'Fighting':0.5,'Ground':0.5},
+      'Ghost':    {'Ghost':2,'Normal':0,'Psychic':0},  /* Gen 1: Ghost vs Psychic = no effect (bug) */
+      'Dragon':   {'Dragon':2}
+    };
+
+    function eff(atk, def) {
+      const row = EFF[atk] || {};
+      return row[def] !== undefined ? row[def] : 1;
+    }
+
+    /* Offensive: what types does this attack type hit super effectively? */
+    const OFFENSE = {};
+    TYPES.forEach(atk => { OFFENSE[atk] = TYPES.filter(def => eff(atk, def) > 1); });
+
+    /* ── Team data ── */
+    const emptySlot = () => ({ name:'', type1:'', type2:'', move1:'', move2:'', move3:'', move4:'', notes:'' });
+    const emptyTeam = n  => ({ name: n, slots: Array.from({length:6}, emptySlot) });
+
+    let teams      = [emptyTeam('Team 1'), emptyTeam('Team 2'), emptyTeam('Team 3')];
+    let activeTeam = 0;
+
+    function tbPersist() {
+      try { localStorage.setItem('lg_teams', JSON.stringify(teams)); } catch(e) {}
+    }
+    function tbLoadStorage() {
+      try {
+        const s = localStorage.getItem('lg_teams');
+        if (s) teams = JSON.parse(s);
+      } catch(e) {}
+    }
+
+    /* ── Populate <select> elements with type options ── */
+    function populateSelects() {
+      const opts = '<option value="">---</option>' + TYPES.map(t => `<option value="${t}">${t}</option>`).join('');
+      for (let i = 0; i < 6; i++) {
+        const s1 = document.getElementById(`type1-${i}`);
+        const s2 = document.getElementById(`type2-${i}`);
+        if (s1) s1.innerHTML = opts;
+        if (s2) s2.innerHTML = opts;
+      }
+    }
+
+    /* ── Seed coverage badge containers ── */
+    function renderBadgeRows() {
+      const offRow = document.getElementById('tb-off-row');
+      const defRow = document.getElementById('tb-def-row');
+      if (!offRow || !defRow) return;
+      const make = prefix => TYPES.map(t => `<span class="tb-cov-badge neutral" id="${prefix}${t}" title="">${t}</span>`).join('');
+      offRow.innerHTML = make('off-');
+      defRow.innerHTML = make('def-');
+    }
+
+    /* ── Update team button labels ── */
+    function refreshBtnLabels() {
+      for (let i = 0; i < 3; i++) {
+        const btn = document.getElementById(`team-btn-${i}`);
+        if (btn) {
+          btn.textContent = teams[i].name || `Team ${i + 1}`;
+          btn.classList.toggle('active', i === activeTeam);
+        }
+      }
+    }
+
+    /* ── Load active team into DOM ── */
+    function tbLoadToSlots() {
+      const team = teams[activeTeam];
+      const nameInput = document.getElementById('tb-team-name');
+      if (nameInput) nameInput.value = team.name || '';
+      for (let i = 0; i < 6; i++) {
+        const s = team.slots[i] || emptySlot();
+        ['name','type1','type2','move1','move2','move3','move4','notes'].forEach(f => {
+          const el = document.getElementById(`${f}-${i}`);
+          if (el) el.value = s[f] || '';
+        });
+      }
+      refreshBtnLabels();
+      tbUpdateCoverage();
+    }
+
+    /* ── Read slots from DOM ── */
+    function tbReadSlots() {
+      return Array.from({length:6}, (_, i) => {
+        const g = f => document.getElementById(`${f}-${i}`)?.value || '';
+        return { name: g('name'), type1: g('type1'), type2: g('type2'),
+                 move1: g('move1'), move2: g('move2'), move3: g('move3'), move4: g('move4'), notes: g('notes') };
+      });
+    }
+
+    /* ── Update type coverage badges ── */
+    function tbUpdateCoverage() {
+      /* Gather team type pairs (only slots with at least type1 set) */
+      const slots = [];
+      for (let i = 0; i < 6; i++) {
+        const t1 = document.getElementById(`type1-${i}`)?.value || '';
+        const t2 = document.getElementById(`type2-${i}`)?.value || '';
+        if (t1) slots.push({ t1, t2 });
+      }
+
+      /* Offensive: union of SE targets across all team types */
+      const offCovered = new Set();
+      slots.forEach(({ t1, t2 }) => {
+        [t1, t2].filter(Boolean).forEach(t => {
+          (OFFENSE[t] || []).forEach(target => offCovered.add(target));
+        });
+      });
+
+      /* Defensive: count how many Pokémon are weak to each attacking type */
+      const weakCount = {};
+      TYPES.forEach(t => { weakCount[t] = 0; });
+      slots.forEach(({ t1, t2 }) => {
+        TYPES.forEach(atk => {
+          const mult = eff(atk, t1) * (t2 ? eff(atk, t2) : 1);
+          if (mult > 1) weakCount[atk]++;
+        });
+      });
+
+      TYPES.forEach(type => {
+        const ob = document.getElementById(`off-${type}`);
+        const db = document.getElementById(`def-${type}`);
+        if (ob) ob.className = 'tb-cov-badge ' + (offCovered.has(type) ? 'covered' : 'neutral');
+        if (db) {
+          const wk = weakCount[type];
+          db.className = 'tb-cov-badge ' + (wk === 0 ? 'neutral' : wk === 1 ? 'weak' : 'multi-weak');
+          db.title = wk > 0 ? `${wk} Pok\u00e9mon weak to ${type}` : '';
+        }
+      });
+    }
+
+    /* ── Public API (called by inline handlers) ── */
+    window.tbSelectTeam = function (idx) {
+      activeTeam = idx;
+      tbLoadToSlots();
+    };
+
+    window.tbSaveTeam = function () {
+      const name = document.getElementById('tb-team-name')?.value?.trim() || `Team ${activeTeam + 1}`;
+      teams[activeTeam] = { name, slots: tbReadSlots() };
+      tbPersist();
+      refreshBtnLabels();
+      const flash = document.getElementById('tb-save-flash');
+      if (flash) {
+        flash.classList.add('show');
+        setTimeout(() => flash.classList.remove('show'), 1800);
+      }
+    };
+
+    window.tbOnChange = function () { tbUpdateCoverage(); };
+
+    /* ── Init ── */
+    function tbInit() {
+      tbLoadStorage();
+      populateSelects();
+      renderBadgeRows();
+      tbLoadToSlots();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', tbInit);
+    } else {
+      tbInit();
+    }
+  })();
   </script>
 
 </body>
