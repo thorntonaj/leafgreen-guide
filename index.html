@@ -713,6 +713,11 @@
       margin-top: 2px;
     }
 
+    .gl-portrait-wrap { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+    .gl-portrait { width: 150px; height: 150px; image-rendering: pixelated; display: block; }
+    .gl-pkmn-sprites { grid-column: 1 / -1; display: flex; gap: 4px; align-items: flex-end; flex-wrap: wrap; padding-top: 4px; }
+    .gl-pkmn-sprites img { width: 64px; height: 64px; image-rendering: pixelated; }
+
     /* ── Team Builder ── */
     .tb-wrap { display: flex; flex-direction: column; gap: 20px; }
 
@@ -770,6 +775,20 @@
     .tb-excl-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
     .tb-excl-item { background: rgba(0,204,68,0.05); border: 1px solid rgba(0,204,68,0.2); padding: 7px 10px; font-size: 18px; color: var(--white); display: flex; align-items: flex-start; gap: 6px; }
     .tb-excl-item::before { content: '▸'; color: var(--green); font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+
+    /* ── Pokémon picker search ── */
+    .tb-search-wrap { flex: 1; min-width: 0; position: relative; }
+    .tb-search-wrap .tb-name-input { width: 100%; }
+    .tb-dropdown { position: absolute; top: 100%; left: 0; right: 0; z-index: 200; background: var(--navy-mid); border: 1px solid var(--yellow); max-height: 160px; overflow-y: auto; display: none; }
+    .tb-dropdown-item { font-family: 'VT323', monospace; font-size: 19px; color: var(--white); padding: 3px 8px; cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .tb-dropdown-item:hover { background: rgba(255,204,0,0.15); color: var(--yellow); }
+    .tb-dd-error { font-family: 'VT323', monospace; font-size: 17px; color: var(--red-bright); padding: 4px 8px; }
+    .tb-sprite { width: 96px; height: 96px; image-rendering: pixelated; flex-shrink: 0; }
+    .tb-sprite-center { display: flex; justify-content: center; padding: 6px 0 2px; }
+    .tb-loading { font-family: 'Press Start 2P', monospace; font-size: 7px; color: var(--gray); flex-shrink: 0; letter-spacing: 2px; }
+    .tb-move-wrap { position: relative; }
+    .tb-move-sep { font-family: 'Press Start 2P', monospace; font-size: 5px; color: var(--gray); padding: 4px 8px 3px; background: rgba(42,74,127,0.25); letter-spacing: 1px; cursor: default; user-select: none; }
+    .tb-move-label { color: var(--gray); font-size: 16px; }
 
     @media (max-width: 680px) {
       .tb-slots-grid { grid-template-columns: 1fr; }
@@ -1821,7 +1840,7 @@
               <span class="gl-name">Brock</span>
               <span class="gl-meta">Pewter City &bull; Boulder Badge</span>
             </div>
-            <span class="gl-badge-pill type-rock">Rock</span>
+            <div class="gl-portrait-wrap"><img class="gl-portrait" src="https://play.pokemonshowdown.com/sprites/trainers/brock.png" alt="Brock"><span class="gl-badge-pill type-rock">Rock</span></div>
           </div>
           <div class="gl-body">
             <p class="gl-desc">The stoic first gym leader. A rock-solid trainer who doubles as a caretaker for his many younger siblings. Unmoved by flashy tactics — he relies on pure defensive bulk.</p>
@@ -1862,6 +1881,10 @@
                 <span class="gl-reward-val">TM39 Rock Tomb</span>
               </div>
             </div>
+            <div class="gl-pkmn-sprites">
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/74.png" alt="Geodude">
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/95.png" alt="Onix">
+            </div>
             <div class="gl-tip-col">
               <div class="gl-tip-box">No Water or Grass Pokemon are available before Brock. If you picked Charmander, detour to Route 22 before Viridian Forest and catch a Mankey — Low Kick is your best option against his team.</div>
             </div>
@@ -1876,7 +1899,7 @@
               <span class="gl-name">Misty</span>
               <span class="gl-meta">Cerulean City &bull; Cascade Badge</span>
             </div>
-            <span class="gl-badge-pill type-water">Water</span>
+            <div class="gl-portrait-wrap"><img class="gl-portrait" src="https://play.pokemonshowdown.com/sprites/trainers/misty.png" alt="Misty"><span class="gl-badge-pill type-water">Water</span></div>
           </div>
           <div class="gl-body">
             <p class="gl-desc">A tomboyish mermaid who prides herself on powerful Water-type attacks. Deceptively aggressive for the second gym — Starmie's Recover can make a long fight even longer.</p>
@@ -1916,6 +1939,10 @@
                 <span class="gl-reward-val">TM03 Water Pulse</span>
               </div>
             </div>
+            <div class="gl-pkmn-sprites">
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/120.png" alt="Staryu">
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/121.png" alt="Starmie">
+            </div>
             <div class="gl-tip-col">
               <div class="gl-tip-box">Starmie's Recover makes it dangerous — hit it hard and fast with Electric or Grass before it can heal. Don't let the fight drag on or it will slowly outlast you.</div>
             </div>
@@ -1930,7 +1957,7 @@
               <span class="gl-name">Lt. Surge</span>
               <span class="gl-meta">Vermilion City &bull; Thunder Badge</span>
             </div>
-            <span class="gl-badge-pill type-electric">Electric</span>
+            <div class="gl-portrait-wrap"><img class="gl-portrait" src="https://play.pokemonshowdown.com/sprites/trainers/ltsurge.png" alt="Lt. Surge"><span class="gl-badge-pill type-electric">Electric</span></div>
           </div>
           <div class="gl-body">
             <p class="gl-desc">The Lightning American — a military veteran who shocks opponents into submission with raw Electric power. His Raichu is faster and stronger than it looks.</p>
@@ -1973,6 +2000,11 @@
                 <span class="gl-reward-val">TM34 Shock Wave</span>
               </div>
             </div>
+            <div class="gl-pkmn-sprites">
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/100.png" alt="Voltorb">
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/25.png" alt="Pikachu">
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/26.png" alt="Raichu">
+            </div>
             <div class="gl-tip-col">
               <div class="gl-tip-box">Diglett's Cave is directly east of Vermilion City — grab a Diglett before challenging Surge. It completely walls his entire team with Ground immunity and strong Magnitude damage.</div>
             </div>
@@ -1987,7 +2019,7 @@
               <span class="gl-name">Erika</span>
               <span class="gl-meta">Celadon City &bull; Rainbow Badge</span>
             </div>
-            <span class="gl-badge-pill type-grass">Grass</span>
+            <div class="gl-portrait-wrap"><img class="gl-portrait" src="https://play.pokemonshowdown.com/sprites/trainers/erika.png" alt="Erika"><span class="gl-badge-pill type-grass">Grass</span></div>
           </div>
           <div class="gl-body">
             <p class="gl-desc">A graceful and serene Gym Leader who specializes in Grass-type Pokemon with sleep-inducing moves. Don't let her calm demeanor fool you — Sleep Powder can end a run quickly.</p>
@@ -2034,6 +2066,11 @@
                 <span class="gl-reward-val">TM19 Giga Drain</span>
               </div>
             </div>
+            <div class="gl-pkmn-sprites">
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/114.png" alt="Tangela">
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/70.png" alt="Weepinbell">
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/71.png" alt="Victreebel">
+            </div>
             <div class="gl-tip-col">
               <div class="gl-tip-box">Every Pokemon on Erika's team knows Sleep Powder — bring Awakenings. Flying moves hit her entire team for super effective damage and bypass Wrap/Constrict stall tactics.</div>
             </div>
@@ -2048,7 +2085,7 @@
               <span class="gl-name">Koga</span>
               <span class="gl-meta">Fuchsia City &bull; Soul Badge</span>
             </div>
-            <span class="gl-badge-pill type-poison">Poison</span>
+            <div class="gl-portrait-wrap"><img class="gl-portrait" src="https://play.pokemonshowdown.com/sprites/trainers/koga.png" alt="Koga"><span class="gl-badge-pill type-poison">Poison</span></div>
           </div>
           <div class="gl-body">
             <p class="gl-desc">A ninja master who relies on status conditions, poison, and stalling tactics to wear opponents down. He will Toxic you, Smokescreen you, and Selfdestruct when cornered — plan ahead.</p>
@@ -2096,6 +2133,12 @@
                 <span class="gl-reward-val">TM06 Toxic</span>
               </div>
             </div>
+            <div class="gl-pkmn-sprites">
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/109.png" alt="Koffing">
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/109.png" alt="Koffing">
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/89.png" alt="Muk">
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/110.png" alt="Weezing">
+            </div>
             <div class="gl-tip-col">
               <div class="gl-tip-box">Bring lots of Antidotes and Full Heals — Koga will poison and status your entire team if given the chance. Lead with a strong Psychic-type and try to end each Pokemon in one or two hits before status piles up.</div>
             </div>
@@ -2110,7 +2153,7 @@
               <span class="gl-name">Sabrina</span>
               <span class="gl-meta">Saffron City &bull; Marsh Badge</span>
             </div>
-            <span class="gl-badge-pill type-psychic">Psychic</span>
+            <div class="gl-portrait-wrap"><img class="gl-portrait" src="https://play.pokemonshowdown.com/sprites/trainers/sabrina.png" alt="Sabrina"><span class="gl-badge-pill type-psychic">Psychic</span></div>
           </div>
           <div class="gl-body">
             <p class="gl-desc">The mistress of psychic power — a cold, calculating trainer with terrifying Special Attack. Her Alakazam is among the fastest Pokemon in the game and hits as hard as it looks.</p>
@@ -2158,6 +2201,12 @@
                 <span class="gl-reward-val">TM04 Calm Mind</span>
               </div>
             </div>
+            <div class="gl-pkmn-sprites">
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/122.png" alt="Mr. Mime">
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/49.png" alt="Venomoth">
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/64.png" alt="Kadabra">
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/65.png" alt="Alakazam">
+            </div>
             <div class="gl-tip-col">
               <div class="gl-tip-box">Gastly and Haunter are available in Pokemon Tower in Lavender Town — catch one before tackling Saffron City. Ghost types are immune to her Normal and Fighting moves and resist Psychic in Gen I mechanics.</div>
             </div>
@@ -2172,7 +2221,7 @@
               <span class="gl-name">Blaine</span>
               <span class="gl-meta">Cinnabar Island &bull; Volcano Badge</span>
             </div>
-            <span class="gl-badge-pill type-fire">Fire</span>
+            <div class="gl-portrait-wrap"><img class="gl-portrait" src="https://play.pokemonshowdown.com/sprites/trainers/blaine.png" alt="Blaine"><span class="gl-badge-pill type-fire">Fire</span></div>
           </div>
           <div class="gl-body">
             <p class="gl-desc">A fiery old man who quizzes challengers before they can reach him — answer wrong and face extra trainers before the battle. His Arcanine at level 47 is the most powerful Gym Leader Pokemon in Kanto.</p>
@@ -2221,6 +2270,12 @@
                 <span class="gl-reward-val">TM38 Fire Blast</span>
               </div>
             </div>
+            <div class="gl-pkmn-sprites">
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/77.png" alt="Ponyta">
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/58.png" alt="Growlithe">
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/78.png" alt="Rapidash">
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/59.png" alt="Arcanine">
+            </div>
             <div class="gl-tip-col">
               <div class="gl-tip-box">Answer the quiz questions correctly to skip the extra trainers and go straight to Blaine. Bring plenty of Water moves — Arcanine at level 47 hits very hard and Fire Spin traps you for multiple turns.</div>
             </div>
@@ -2235,7 +2290,7 @@
               <span class="gl-name">Giovanni</span>
               <span class="gl-meta">Viridian City &bull; Earth Badge</span>
             </div>
-            <span class="gl-badge-pill type-ground">Ground</span>
+            <div class="gl-portrait-wrap"><img class="gl-portrait" src="https://play.pokemonshowdown.com/sprites/trainers/giovanni.png" alt="Giovanni"><span class="gl-badge-pill type-ground">Ground</span></div>
           </div>
           <div class="gl-body">
             <p class="gl-desc">The boss of Team Rocket hiding in plain sight as the final Gym Leader. His Ground-type team is the toughest in all of Kanto — bulky, hard-hitting, and capped by a level 50 Rhydon.</p>
@@ -2288,6 +2343,13 @@
                 <span class="gl-reward-val">TM26 Earthquake</span>
               </div>
             </div>
+            <div class="gl-pkmn-sprites">
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/111.png" alt="Rhyhorn">
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/51.png" alt="Dugtrio">
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/31.png" alt="Nidoqueen">
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/34.png" alt="Nidoking">
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/112.png" alt="Rhydon">
+            </div>
             <div class="gl-tip-col">
               <div class="gl-tip-box">Rhydon at level 50 is the real threat — Horn Drill is a one-hit KO move. Make sure your team is level 45–50 before entering. Surf will deal super effective damage to every single Pokemon on his roster.</div>
             </div>
@@ -2315,7 +2377,7 @@
             <button class="tb-team-btn"        id="team-btn-2" onclick="tbSelectTeam(2)">Team 3</button>
           </div>
           <div class="tb-config-right">
-            <input class="tb-rename-input" id="tb-team-name" type="text" placeholder="Team name..." maxlength="24">
+            <input class="tb-rename-input" id="tb-team-name" type="text" placeholder="Team name..." maxlength="24" autocomplete="off">
             <button class="tb-save-btn" onclick="tbSaveTeam()">Save Team</button>
             <span class="tb-save-flash" id="tb-save-flash">SAVED!</span>
           </div>
@@ -2328,20 +2390,25 @@
           <div class="tb-slot">
             <div class="tb-slot-header">
               <span class="tb-slot-num">&#9654; SLOT 1</span>
-              <input class="tb-name-input" id="name-0" type="text" placeholder="Pokemon Name" maxlength="20">
+              <div class="tb-search-wrap">
+                <input class="tb-name-input" id="name-0" type="text" placeholder="Pokémon name…" maxlength="20" autocomplete="off" spellcheck="false">
+                <div class="tb-dropdown" id="tb-dd-0"></div>
+              </div>
+              <span class="tb-loading" id="tb-load-0" style="display:none">&#9642;&#9642;&#9642;</span>
             </div>
+            <div class="tb-sprite-center"><img class="tb-sprite" id="tb-sprite-0" src="" alt="" style="display:none"></div>
             <div class="tb-slot-body">
               <div class="tb-types-row">
                 <div><div class="tb-label">Type 1</div><select class="tb-select" id="type1-0" onchange="tbOnChange()"></select></div>
                 <div><div class="tb-label">Type 2</div><select class="tb-select" id="type2-0" onchange="tbOnChange()"></select></div>
               </div>
               <div class="tb-moves-grid">
-                <div><div class="tb-label">Move 1</div><input class="tb-input" id="move1-0" type="text" placeholder="Move 1" maxlength="30"></div>
-                <div><div class="tb-label">Move 2</div><input class="tb-input" id="move2-0" type="text" placeholder="Move 2" maxlength="30"></div>
-                <div><div class="tb-label">Move 3</div><input class="tb-input" id="move3-0" type="text" placeholder="Move 3" maxlength="30"></div>
-                <div><div class="tb-label">Move 4</div><input class="tb-input" id="move4-0" type="text" placeholder="Move 4" maxlength="30"></div>
+                <div><div class="tb-label">Move 1</div><div class="tb-move-wrap"><input class="tb-input" id="move1-0" type="text" placeholder="Move 1" maxlength="30" autocomplete="off"><div class="tb-dropdown" id="tb-move-dd-0-1"></div></div></div>
+                <div><div class="tb-label">Move 2</div><div class="tb-move-wrap"><input class="tb-input" id="move2-0" type="text" placeholder="Move 2" maxlength="30" autocomplete="off"><div class="tb-dropdown" id="tb-move-dd-0-2"></div></div></div>
+                <div><div class="tb-label">Move 3</div><div class="tb-move-wrap"><input class="tb-input" id="move3-0" type="text" placeholder="Move 3" maxlength="30" autocomplete="off"><div class="tb-dropdown" id="tb-move-dd-0-3"></div></div></div>
+                <div><div class="tb-label">Move 4</div><div class="tb-move-wrap"><input class="tb-input" id="move4-0" type="text" placeholder="Move 4" maxlength="30" autocomplete="off"><div class="tb-dropdown" id="tb-move-dd-0-4"></div></div></div>
               </div>
-              <div><div class="tb-label">Notes</div><input class="tb-input" id="notes-0" type="text" placeholder="Held item, strategy..." maxlength="60"></div>
+              <div><div class="tb-label">Notes</div><input class="tb-input" id="notes-0" type="text" placeholder="Held item, strategy..." maxlength="60" autocomplete="off"></div>
             </div>
           </div>
 
@@ -2349,20 +2416,25 @@
           <div class="tb-slot">
             <div class="tb-slot-header">
               <span class="tb-slot-num">&#9654; SLOT 2</span>
-              <input class="tb-name-input" id="name-1" type="text" placeholder="Pokemon Name" maxlength="20">
+              <div class="tb-search-wrap">
+                <input class="tb-name-input" id="name-1" type="text" placeholder="Pokémon name…" maxlength="20" autocomplete="off" spellcheck="false">
+                <div class="tb-dropdown" id="tb-dd-1"></div>
+              </div>
+              <span class="tb-loading" id="tb-load-1" style="display:none">&#9642;&#9642;&#9642;</span>
             </div>
+            <div class="tb-sprite-center"><img class="tb-sprite" id="tb-sprite-1" src="" alt="" style="display:none"></div>
             <div class="tb-slot-body">
               <div class="tb-types-row">
                 <div><div class="tb-label">Type 1</div><select class="tb-select" id="type1-1" onchange="tbOnChange()"></select></div>
                 <div><div class="tb-label">Type 2</div><select class="tb-select" id="type2-1" onchange="tbOnChange()"></select></div>
               </div>
               <div class="tb-moves-grid">
-                <div><div class="tb-label">Move 1</div><input class="tb-input" id="move1-1" type="text" placeholder="Move 1" maxlength="30"></div>
-                <div><div class="tb-label">Move 2</div><input class="tb-input" id="move2-1" type="text" placeholder="Move 2" maxlength="30"></div>
-                <div><div class="tb-label">Move 3</div><input class="tb-input" id="move3-1" type="text" placeholder="Move 3" maxlength="30"></div>
-                <div><div class="tb-label">Move 4</div><input class="tb-input" id="move4-1" type="text" placeholder="Move 4" maxlength="30"></div>
+                <div><div class="tb-label">Move 1</div><div class="tb-move-wrap"><input class="tb-input" id="move1-1" type="text" placeholder="Move 1" maxlength="30" autocomplete="off"><div class="tb-dropdown" id="tb-move-dd-1-1"></div></div></div>
+                <div><div class="tb-label">Move 2</div><div class="tb-move-wrap"><input class="tb-input" id="move2-1" type="text" placeholder="Move 2" maxlength="30" autocomplete="off"><div class="tb-dropdown" id="tb-move-dd-1-2"></div></div></div>
+                <div><div class="tb-label">Move 3</div><div class="tb-move-wrap"><input class="tb-input" id="move3-1" type="text" placeholder="Move 3" maxlength="30" autocomplete="off"><div class="tb-dropdown" id="tb-move-dd-1-3"></div></div></div>
+                <div><div class="tb-label">Move 4</div><div class="tb-move-wrap"><input class="tb-input" id="move4-1" type="text" placeholder="Move 4" maxlength="30" autocomplete="off"><div class="tb-dropdown" id="tb-move-dd-1-4"></div></div></div>
               </div>
-              <div><div class="tb-label">Notes</div><input class="tb-input" id="notes-1" type="text" placeholder="Held item, strategy..." maxlength="60"></div>
+              <div><div class="tb-label">Notes</div><input class="tb-input" id="notes-1" type="text" placeholder="Held item, strategy..." maxlength="60" autocomplete="off"></div>
             </div>
           </div>
 
@@ -2370,20 +2442,25 @@
           <div class="tb-slot">
             <div class="tb-slot-header">
               <span class="tb-slot-num">&#9654; SLOT 3</span>
-              <input class="tb-name-input" id="name-2" type="text" placeholder="Pokemon Name" maxlength="20">
+              <div class="tb-search-wrap">
+                <input class="tb-name-input" id="name-2" type="text" placeholder="Pokémon name…" maxlength="20" autocomplete="off" spellcheck="false">
+                <div class="tb-dropdown" id="tb-dd-2"></div>
+              </div>
+              <span class="tb-loading" id="tb-load-2" style="display:none">&#9642;&#9642;&#9642;</span>
             </div>
+            <div class="tb-sprite-center"><img class="tb-sprite" id="tb-sprite-2" src="" alt="" style="display:none"></div>
             <div class="tb-slot-body">
               <div class="tb-types-row">
                 <div><div class="tb-label">Type 1</div><select class="tb-select" id="type1-2" onchange="tbOnChange()"></select></div>
                 <div><div class="tb-label">Type 2</div><select class="tb-select" id="type2-2" onchange="tbOnChange()"></select></div>
               </div>
               <div class="tb-moves-grid">
-                <div><div class="tb-label">Move 1</div><input class="tb-input" id="move1-2" type="text" placeholder="Move 1" maxlength="30"></div>
-                <div><div class="tb-label">Move 2</div><input class="tb-input" id="move2-2" type="text" placeholder="Move 2" maxlength="30"></div>
-                <div><div class="tb-label">Move 3</div><input class="tb-input" id="move3-2" type="text" placeholder="Move 3" maxlength="30"></div>
-                <div><div class="tb-label">Move 4</div><input class="tb-input" id="move4-2" type="text" placeholder="Move 4" maxlength="30"></div>
+                <div><div class="tb-label">Move 1</div><div class="tb-move-wrap"><input class="tb-input" id="move1-2" type="text" placeholder="Move 1" maxlength="30" autocomplete="off"><div class="tb-dropdown" id="tb-move-dd-2-1"></div></div></div>
+                <div><div class="tb-label">Move 2</div><div class="tb-move-wrap"><input class="tb-input" id="move2-2" type="text" placeholder="Move 2" maxlength="30" autocomplete="off"><div class="tb-dropdown" id="tb-move-dd-2-2"></div></div></div>
+                <div><div class="tb-label">Move 3</div><div class="tb-move-wrap"><input class="tb-input" id="move3-2" type="text" placeholder="Move 3" maxlength="30" autocomplete="off"><div class="tb-dropdown" id="tb-move-dd-2-3"></div></div></div>
+                <div><div class="tb-label">Move 4</div><div class="tb-move-wrap"><input class="tb-input" id="move4-2" type="text" placeholder="Move 4" maxlength="30" autocomplete="off"><div class="tb-dropdown" id="tb-move-dd-2-4"></div></div></div>
               </div>
-              <div><div class="tb-label">Notes</div><input class="tb-input" id="notes-2" type="text" placeholder="Held item, strategy..." maxlength="60"></div>
+              <div><div class="tb-label">Notes</div><input class="tb-input" id="notes-2" type="text" placeholder="Held item, strategy..." maxlength="60" autocomplete="off"></div>
             </div>
           </div>
 
@@ -2391,20 +2468,25 @@
           <div class="tb-slot">
             <div class="tb-slot-header">
               <span class="tb-slot-num">&#9654; SLOT 4</span>
-              <input class="tb-name-input" id="name-3" type="text" placeholder="Pokemon Name" maxlength="20">
+              <div class="tb-search-wrap">
+                <input class="tb-name-input" id="name-3" type="text" placeholder="Pokémon name…" maxlength="20" autocomplete="off" spellcheck="false">
+                <div class="tb-dropdown" id="tb-dd-3"></div>
+              </div>
+              <span class="tb-loading" id="tb-load-3" style="display:none">&#9642;&#9642;&#9642;</span>
             </div>
+            <div class="tb-sprite-center"><img class="tb-sprite" id="tb-sprite-3" src="" alt="" style="display:none"></div>
             <div class="tb-slot-body">
               <div class="tb-types-row">
                 <div><div class="tb-label">Type 1</div><select class="tb-select" id="type1-3" onchange="tbOnChange()"></select></div>
                 <div><div class="tb-label">Type 2</div><select class="tb-select" id="type2-3" onchange="tbOnChange()"></select></div>
               </div>
               <div class="tb-moves-grid">
-                <div><div class="tb-label">Move 1</div><input class="tb-input" id="move1-3" type="text" placeholder="Move 1" maxlength="30"></div>
-                <div><div class="tb-label">Move 2</div><input class="tb-input" id="move2-3" type="text" placeholder="Move 2" maxlength="30"></div>
-                <div><div class="tb-label">Move 3</div><input class="tb-input" id="move3-3" type="text" placeholder="Move 3" maxlength="30"></div>
-                <div><div class="tb-label">Move 4</div><input class="tb-input" id="move4-3" type="text" placeholder="Move 4" maxlength="30"></div>
+                <div><div class="tb-label">Move 1</div><div class="tb-move-wrap"><input class="tb-input" id="move1-3" type="text" placeholder="Move 1" maxlength="30" autocomplete="off"><div class="tb-dropdown" id="tb-move-dd-3-1"></div></div></div>
+                <div><div class="tb-label">Move 2</div><div class="tb-move-wrap"><input class="tb-input" id="move2-3" type="text" placeholder="Move 2" maxlength="30" autocomplete="off"><div class="tb-dropdown" id="tb-move-dd-3-2"></div></div></div>
+                <div><div class="tb-label">Move 3</div><div class="tb-move-wrap"><input class="tb-input" id="move3-3" type="text" placeholder="Move 3" maxlength="30" autocomplete="off"><div class="tb-dropdown" id="tb-move-dd-3-3"></div></div></div>
+                <div><div class="tb-label">Move 4</div><div class="tb-move-wrap"><input class="tb-input" id="move4-3" type="text" placeholder="Move 4" maxlength="30" autocomplete="off"><div class="tb-dropdown" id="tb-move-dd-3-4"></div></div></div>
               </div>
-              <div><div class="tb-label">Notes</div><input class="tb-input" id="notes-3" type="text" placeholder="Held item, strategy..." maxlength="60"></div>
+              <div><div class="tb-label">Notes</div><input class="tb-input" id="notes-3" type="text" placeholder="Held item, strategy..." maxlength="60" autocomplete="off"></div>
             </div>
           </div>
 
@@ -2412,20 +2494,25 @@
           <div class="tb-slot">
             <div class="tb-slot-header">
               <span class="tb-slot-num">&#9654; SLOT 5</span>
-              <input class="tb-name-input" id="name-4" type="text" placeholder="Pokemon Name" maxlength="20">
+              <div class="tb-search-wrap">
+                <input class="tb-name-input" id="name-4" type="text" placeholder="Pokémon name…" maxlength="20" autocomplete="off" spellcheck="false">
+                <div class="tb-dropdown" id="tb-dd-4"></div>
+              </div>
+              <span class="tb-loading" id="tb-load-4" style="display:none">&#9642;&#9642;&#9642;</span>
             </div>
+            <div class="tb-sprite-center"><img class="tb-sprite" id="tb-sprite-4" src="" alt="" style="display:none"></div>
             <div class="tb-slot-body">
               <div class="tb-types-row">
                 <div><div class="tb-label">Type 1</div><select class="tb-select" id="type1-4" onchange="tbOnChange()"></select></div>
                 <div><div class="tb-label">Type 2</div><select class="tb-select" id="type2-4" onchange="tbOnChange()"></select></div>
               </div>
               <div class="tb-moves-grid">
-                <div><div class="tb-label">Move 1</div><input class="tb-input" id="move1-4" type="text" placeholder="Move 1" maxlength="30"></div>
-                <div><div class="tb-label">Move 2</div><input class="tb-input" id="move2-4" type="text" placeholder="Move 2" maxlength="30"></div>
-                <div><div class="tb-label">Move 3</div><input class="tb-input" id="move3-4" type="text" placeholder="Move 3" maxlength="30"></div>
-                <div><div class="tb-label">Move 4</div><input class="tb-input" id="move4-4" type="text" placeholder="Move 4" maxlength="30"></div>
+                <div><div class="tb-label">Move 1</div><div class="tb-move-wrap"><input class="tb-input" id="move1-4" type="text" placeholder="Move 1" maxlength="30" autocomplete="off"><div class="tb-dropdown" id="tb-move-dd-4-1"></div></div></div>
+                <div><div class="tb-label">Move 2</div><div class="tb-move-wrap"><input class="tb-input" id="move2-4" type="text" placeholder="Move 2" maxlength="30" autocomplete="off"><div class="tb-dropdown" id="tb-move-dd-4-2"></div></div></div>
+                <div><div class="tb-label">Move 3</div><div class="tb-move-wrap"><input class="tb-input" id="move3-4" type="text" placeholder="Move 3" maxlength="30" autocomplete="off"><div class="tb-dropdown" id="tb-move-dd-4-3"></div></div></div>
+                <div><div class="tb-label">Move 4</div><div class="tb-move-wrap"><input class="tb-input" id="move4-4" type="text" placeholder="Move 4" maxlength="30" autocomplete="off"><div class="tb-dropdown" id="tb-move-dd-4-4"></div></div></div>
               </div>
-              <div><div class="tb-label">Notes</div><input class="tb-input" id="notes-4" type="text" placeholder="Held item, strategy..." maxlength="60"></div>
+              <div><div class="tb-label">Notes</div><input class="tb-input" id="notes-4" type="text" placeholder="Held item, strategy..." maxlength="60" autocomplete="off"></div>
             </div>
           </div>
 
@@ -2433,20 +2520,25 @@
           <div class="tb-slot">
             <div class="tb-slot-header">
               <span class="tb-slot-num">&#9654; SLOT 6</span>
-              <input class="tb-name-input" id="name-5" type="text" placeholder="Pokemon Name" maxlength="20">
+              <div class="tb-search-wrap">
+                <input class="tb-name-input" id="name-5" type="text" placeholder="Pokémon name…" maxlength="20" autocomplete="off" spellcheck="false">
+                <div class="tb-dropdown" id="tb-dd-5"></div>
+              </div>
+              <span class="tb-loading" id="tb-load-5" style="display:none">&#9642;&#9642;&#9642;</span>
             </div>
+            <div class="tb-sprite-center"><img class="tb-sprite" id="tb-sprite-5" src="" alt="" style="display:none"></div>
             <div class="tb-slot-body">
               <div class="tb-types-row">
                 <div><div class="tb-label">Type 1</div><select class="tb-select" id="type1-5" onchange="tbOnChange()"></select></div>
                 <div><div class="tb-label">Type 2</div><select class="tb-select" id="type2-5" onchange="tbOnChange()"></select></div>
               </div>
               <div class="tb-moves-grid">
-                <div><div class="tb-label">Move 1</div><input class="tb-input" id="move1-5" type="text" placeholder="Move 1" maxlength="30"></div>
-                <div><div class="tb-label">Move 2</div><input class="tb-input" id="move2-5" type="text" placeholder="Move 2" maxlength="30"></div>
-                <div><div class="tb-label">Move 3</div><input class="tb-input" id="move3-5" type="text" placeholder="Move 3" maxlength="30"></div>
-                <div><div class="tb-label">Move 4</div><input class="tb-input" id="move4-5" type="text" placeholder="Move 4" maxlength="30"></div>
+                <div><div class="tb-label">Move 1</div><div class="tb-move-wrap"><input class="tb-input" id="move1-5" type="text" placeholder="Move 1" maxlength="30" autocomplete="off"><div class="tb-dropdown" id="tb-move-dd-5-1"></div></div></div>
+                <div><div class="tb-label">Move 2</div><div class="tb-move-wrap"><input class="tb-input" id="move2-5" type="text" placeholder="Move 2" maxlength="30" autocomplete="off"><div class="tb-dropdown" id="tb-move-dd-5-2"></div></div></div>
+                <div><div class="tb-label">Move 3</div><div class="tb-move-wrap"><input class="tb-input" id="move3-5" type="text" placeholder="Move 3" maxlength="30" autocomplete="off"><div class="tb-dropdown" id="tb-move-dd-5-3"></div></div></div>
+                <div><div class="tb-label">Move 4</div><div class="tb-move-wrap"><input class="tb-input" id="move4-5" type="text" placeholder="Move 4" maxlength="30" autocomplete="off"><div class="tb-dropdown" id="tb-move-dd-5-4"></div></div></div>
               </div>
-              <div><div class="tb-label">Notes</div><input class="tb-input" id="notes-5" type="text" placeholder="Held item, strategy..." maxlength="60"></div>
+              <div><div class="tb-label">Notes</div><input class="tb-input" id="notes-5" type="text" placeholder="Held item, strategy..." maxlength="60" autocomplete="off"></div>
             </div>
           </div>
 
@@ -2694,6 +2786,324 @@
       document.addEventListener('DOMContentLoaded', tbInit);
     } else {
       tbInit();
+    }
+  })();
+  </script>
+
+  <script>
+  /* ── PokéAPI Pokémon Picker ── */
+  (function () {
+    'use strict';
+
+    var gen1List   = [];   /* [{name, url}, …] */
+    var apiReady   = false;
+    var apiFailed  = false;
+
+    /* Per-team sprite cache: spritesByTeam[teamIdx][slotIdx] = url */
+    var spritesByTeam = { 0: {}, 1: {}, 2: {} };
+    var activeTeamIdx = 0;
+
+    /* Move data cache: moveCache[slotIdx] = { levelUp: [...], tmhm: [...] } */
+    var moveCache = {};
+
+    /* ── Fetch the Gen 1 list on page load ── */
+    function fetchGen1List() {
+      fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
+        .then(function (res) {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          return res.json();
+        })
+        .then(function (data) {
+          gen1List = data.results;
+          apiReady = true;
+        })
+        .catch(function (e) {
+          apiFailed = true;
+          console.warn('[PokéAPI] List unavailable:', e.message);
+        });
+    }
+
+    /* ── Helpers ── */
+    function capFirst(s) {
+      return s ? s.charAt(0).toUpperCase() + s.slice(1) : '';
+    }
+
+    function formatMoveName(n) {
+      return n.split('-').map(capFirst).join(' ');
+    }
+
+    /* LeafGreen-obtainable TMs and HMs: API move name → label */
+    var LG_TM_HM = {
+      'cut':'HM01','fly':'HM02','surf':'HM03','strength':'HM04',
+      'flash':'HM05','rock-smash':'HM06','waterfall':'HM07',
+      'focus-punch':'TM01','dragon-claw':'TM02','water-pulse':'TM03',
+      'calm-mind':'TM04','roar':'TM05','toxic':'TM06','hail':'TM07',
+      'bulk-up':'TM08','bullet-seed':'TM09','hidden-power':'TM10',
+      'sunny-day':'TM11','taunt':'TM12','ice-beam':'TM13','blizzard':'TM14',
+      'hyper-beam':'TM15','light-screen':'TM16','protect':'TM17',
+      'rain-dance':'TM18','giga-drain':'TM19','safeguard':'TM20',
+      'frustration':'TM21','solar-beam':'TM22','iron-tail':'TM23',
+      'thunderbolt':'TM24','thunder':'TM25','earthquake':'TM26',
+      'return':'TM27','dig':'TM28','psychic':'TM29','shadow-ball':'TM30',
+      'brick-break':'TM31','double-team':'TM32','reflect':'TM33',
+      'shock-wave':'TM34','flamethrower':'TM35','sludge-bomb':'TM36',
+      'sandstorm':'TM37','fire-blast':'TM38','rock-tomb':'TM39',
+      'aerial-ace':'TM40','torment':'TM41','facade':'TM42',
+      'secret-power':'TM43','rest':'TM44','attract':'TM45','thief':'TM46',
+      'steel-wing':'TM47','skill-swap':'TM48','snatch':'TM49','overheat':'TM50'
+    };
+
+    function buildMoveDropdownHtml(levelUpMoves, tmhmMoves) {
+      var html = '';
+      if (levelUpMoves.length) {
+        html += '<div class="tb-move-sep">&#9650; Level-up</div>';
+        levelUpMoves.forEach(function (m) {
+          var display = formatMoveName(m.name);
+          html += '<div class="tb-dropdown-item" data-move="' + display + '">'
+                + display + ' <span class="tb-move-label">(Lv.' + m.level + ')</span></div>';
+        });
+      }
+      if (tmhmMoves.length) {
+        html += '<div class="tb-move-sep">&#9654; TM / HM</div>';
+        tmhmMoves.forEach(function (m) {
+          var display = formatMoveName(m.name);
+          html += '<div class="tb-dropdown-item" data-move="' + display + '">'
+                + display + ' <span class="tb-move-label">(' + LG_TM_HM[m.name] + ')</span></div>';
+        });
+      }
+      return html;
+    }
+
+    function renderMoveDropdown(i, moveNum, query) {
+      var moveDd = document.getElementById('tb-move-dd-' + i + '-' + moveNum);
+      var cache  = moveCache[i];
+      if (!moveDd || !cache) return;
+      var q = (query || '').trim().toLowerCase();
+      var levelUp, tmhm;
+      if (q) {
+        levelUp = cache.levelUp.filter(function (m) { return formatMoveName(m.name).toLowerCase().indexOf(q) !== -1; });
+        tmhm    = cache.tmhm.filter(function (m)    { return formatMoveName(m.name).toLowerCase().indexOf(q) !== -1; });
+      } else {
+        levelUp = cache.levelUp;
+        tmhm    = cache.tmhm;
+      }
+      if (levelUp.length === 0 && tmhm.length === 0) { moveDd.style.display = 'none'; return; }
+      moveDd.innerHTML = buildMoveDropdownHtml(levelUp, tmhm);
+      moveDd.style.display = 'block';
+    }
+
+    function clearMoveDropdowns(i) {
+      delete moveCache[i];
+      for (var m = 1; m <= 4; m++) {
+        var dd = document.getElementById('tb-move-dd-' + i + '-' + m);
+        if (dd) { dd.innerHTML = ''; dd.style.display = 'none'; }
+      }
+    }
+
+    function filterList(query) {
+      if (!query || !apiReady) return [];
+      var q = query.toLowerCase();
+      return gen1List.filter(function (p) { return p.name.indexOf(q) === 0; }).slice(0, 10);
+    }
+
+    /* ── Sprite management ── */
+    function setSprite(i, url) {
+      var img = document.getElementById('tb-sprite-' + i);
+      if (!img) return;
+      spritesByTeam[activeTeamIdx][i] = url || '';
+      if (url) { img.src = url; img.style.display = ''; }
+      else      { img.src = ''; img.style.display = 'none'; }
+    }
+
+    function restoreSprites(teamIdx) {
+      var cache = spritesByTeam[teamIdx] || {};
+      for (var i = 0; i < 6; i++) { setSprite(i, cache[i] || ''); }
+    }
+
+    /* ── Loading indicator ── */
+    function setLoading(i, on) {
+      var el = document.getElementById('tb-load-' + i);
+      if (el) el.style.display = on ? '' : 'none';
+    }
+
+    /* ── Dropdown ── */
+    function showDropdown(i, items) {
+      var dd = document.getElementById('tb-dd-' + i);
+      if (!dd) return;
+      if (!items || items.length === 0) { dd.style.display = 'none'; dd.innerHTML = ''; return; }
+      dd.innerHTML = items.map(function (p) {
+        return '<div class="tb-dropdown-item" data-name="' + p.name + '">' + capFirst(p.name) + '</div>';
+      }).join('');
+      dd.style.display = 'block';
+      dd.querySelectorAll('.tb-dropdown-item').forEach(function (item) {
+        item.addEventListener('mousedown', function (e) {
+          e.preventDefault();
+          selectPokemon(i, item.getAttribute('data-name'));
+        });
+      });
+    }
+
+    function hideDropdown(i) {
+      var dd = document.getElementById('tb-dd-' + i);
+      if (dd) { dd.style.display = 'none'; dd.innerHTML = ''; }
+    }
+
+    function showDropdownMsg(i, msg) {
+      var dd = document.getElementById('tb-dd-' + i);
+      if (!dd) return;
+      dd.innerHTML = '<div class="tb-dd-error">' + msg + '</div>';
+      dd.style.display = 'block';
+    }
+
+    /* ── Fetch Pokémon data and fill slot ── */
+    function selectPokemon(i, name) {
+      var nameInput = document.getElementById('name-' + i);
+      if (nameInput) nameInput.value = capFirst(name);
+      hideDropdown(i);
+      setLoading(i, true);
+
+      fetch('https://pokeapi.co/api/v2/pokemon/' + name)
+        .then(function (res) {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          return res.json();
+        })
+        .then(function (data) {
+          /* Types — sorted by slot so primary type is always first */
+          var types = data.types.slice().sort(function (a, b) { return a.slot - b.slot; });
+          var type1 = capFirst(types[0] ? types[0].type.name : '');
+          var type2 = capFirst(types[1] ? types[1].type.name : '');
+          var s1 = document.getElementById('type1-' + i);
+          var s2 = document.getElementById('type2-' + i);
+          if (s1) s1.value = type1;
+          if (s2) s2.value = type2;
+
+          /* Sprite */
+          var sprite = (data.sprites && data.sprites.front_default) ? data.sprites.front_default : '';
+          setSprite(i, sprite);
+
+          /* Moves — filter for FireRed/LeafGreen version group */
+          var levelUpMoves = [];
+          var tmhmMoves    = [];
+          (data.moves || []).forEach(function (entry) {
+            var apiName = entry.move.name;
+            entry.version_group_details.forEach(function (vgd) {
+              if (vgd.version_group.name !== 'firered-leafgreen') return;
+              var method = vgd.move_learn_method.name;
+              if (method === 'level-up') {
+                levelUpMoves.push({ name: apiName, level: vgd.level_learned_at });
+              } else if (method === 'machine' && LG_TM_HM[apiName]) {
+                tmhmMoves.push({ name: apiName });
+              }
+            });
+          });
+          /* Sort level-up moves ascending by level, TM/HMs by their label */
+          levelUpMoves.sort(function (a, b) { return a.level - b.level || a.name.localeCompare(b.name); });
+          tmhmMoves.sort(function (a, b) { return LG_TM_HM[a.name] < LG_TM_HM[b.name] ? -1 : 1; });
+
+          /* Default: last 4 level-up moves */
+          var defaults = levelUpMoves.slice(-4);
+          for (var m = 1; m <= 4; m++) {
+            var def = defaults[m - 1];
+            var moveEl = document.getElementById('move' + m + '-' + i);
+            if (moveEl) moveEl.value = def ? formatMoveName(def.name) : '';
+          }
+
+          /* Cache move data — dropdowns render live on focus/input */
+          moveCache[i] = { levelUp: levelUpMoves, tmhm: tmhmMoves };
+
+          /* Refresh coverage panel */
+          if (window.tbOnChange) window.tbOnChange();
+        })
+        .catch(function (e) {
+          console.warn('[PokéAPI] Fetch failed for ' + name + ':', e.message);
+          showDropdownMsg(i, 'API error — types not filled');
+          setTimeout(function () { hideDropdown(i); }, 2500);
+        })
+        .finally(function () { setLoading(i, false); });
+    }
+
+    /* ── Wire up search for one slot ── */
+    function setupSlot(i) {
+      var input = document.getElementById('name-' + i);
+      if (!input) return;
+
+      input.addEventListener('input', function () {
+        var q = input.value.trim();
+        if (!q) { hideDropdown(i); return; }
+        if (apiFailed) { showDropdownMsg(i, 'PokéAPI unavailable'); return; }
+        if (!apiReady) return;
+        showDropdown(i, filterList(q));
+      });
+
+      input.addEventListener('focus', function () {
+        var q = input.value.trim();
+        if (q && apiReady) showDropdown(i, filterList(q));
+      });
+
+      input.addEventListener('blur', function () {
+        setTimeout(function () { hideDropdown(i); }, 160);
+      });
+
+      /* Clear sprite + move dropdowns when the name field is manually erased */
+      input.addEventListener('change', function () {
+        if (!input.value.trim()) { setSprite(i, ''); clearMoveDropdowns(i); }
+      });
+
+      /* Wire focus/blur and item selection for each move input */
+      for (var m = 1; m <= 4; m++) {
+        (function (moveNum) {
+          var moveInput = document.getElementById('move' + moveNum + '-' + i);
+          var moveDd    = document.getElementById('tb-move-dd-' + i + '-' + moveNum);
+          if (!moveInput || !moveDd) return;
+
+          moveInput.addEventListener('focus', function () {
+            renderMoveDropdown(i, moveNum, moveInput.value);
+          });
+          moveInput.addEventListener('blur', function () {
+            setTimeout(function () { moveDd.style.display = 'none'; }, 160);
+          });
+          moveInput.addEventListener('input', function () {
+            renderMoveDropdown(i, moveNum, moveInput.value);
+          });
+          /* Event delegation — one listener covers the whole dropdown */
+          moveDd.addEventListener('mousedown', function (e) {
+            var item = e.target.closest('.tb-dropdown-item');
+            if (!item) return;
+            e.preventDefault();
+            var mv = item.getAttribute('data-move');
+            if (mv) { moveInput.value = mv; moveDd.style.display = 'none'; }
+          });
+        })(m);
+      }
+    }
+
+    /* ── Patch tbSelectTeam to save/restore sprites across team switches ── */
+    var _origSelectTeam = window.tbSelectTeam;
+    if (_origSelectTeam) {
+      window.tbSelectTeam = function (idx) {
+        /* Save sprites for the team we're leaving */
+        for (var j = 0; j < 6; j++) {
+          var img = document.getElementById('tb-sprite-' + j);
+          spritesByTeam[activeTeamIdx][j] = (img && img.style.display !== 'none') ? img.src : '';
+        }
+        activeTeamIdx = idx;
+        _origSelectTeam(idx);
+        restoreSprites(idx);
+        /* Move dropdowns are per-Pokémon selection, not persisted — clear on switch */
+        for (var j = 0; j < 6; j++) { clearMoveDropdowns(j); }
+      };
+    }
+
+    /* ── Init ── */
+    function init() {
+      fetchGen1List();
+      for (var i = 0; i < 6; i++) { setupSlot(i); }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
     }
   })();
   </script>
